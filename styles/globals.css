@@ -1,27 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  /* H tag font sizes */
+  h1{@apply text-[4.5rem]}
+  h2{@apply text-[4rem]}
+  h3{@apply text-[3.5rem]}
+  h4{@apply text-[3rem]}
+  h5{@apply text-[2.5rem]}
+  h6{@apply text-[2rem]}
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .container{
+    @apply max-w-[1440px] mx-auto px-8 md:px-12 lg:px-16 xl:px-24
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
