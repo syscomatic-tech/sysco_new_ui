@@ -1,12 +1,17 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import Navbar from '@/components/navbar/Navbar'
+import MainLayout from '@/layouts/Main/MainLayout'
+import HeroSection from '@/components/sectionComponents/HeroSection/HeroSection'
 
 export default function Home() {
   return (
-    <div>
-      <h1>hi</h1>
+    <div className='max-w-[1440px] mx-auto'>
+      <div className='relative'>
+        <MainLayout>
+          <HeroSection />
+        </MainLayout>
+      </div>
     </div>
   )
 }

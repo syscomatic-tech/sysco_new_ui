@@ -3,18 +3,18 @@ import React from 'react'
 const typeBasedClasses = (type) => {
     switch (type) {
         case 'primary':
-            return 'text-lg px-[12px] py-[24px] rounded-[8px] bg-primary font-semibold'
+            return 'text-lg text-white py-[12px] px-[24px] rounded-[8px] bg-primary font-semibold'
         case 'primary-large':
-            return 'text-xl px-[15px] py-[24px] rounded-[8px] bg-primary font-semibold'
+            return 'text-xl text-white py-[15px] px-[24px] rounded-[8px] bg-primary font-semibold'
         case 'primary-small':
-            return 'px-[10px] py-[24px] rounded-[8px] bg-primary font-semibold'
+            return 'py-[10px] px-[24px] rounded-[8px] bg-primary font-semibold'
         default:
-            'text-lg px-[12px] py-[24px] rounded-[8px] bg-primary font-semibold';
+            'text-lg text-white py-[12px] px-[24px] rounded-[8px] bg-primary font-semibold';
     }
 }
 const Button = ({ type, children, className, onClick }) => {
     return (
-        <button className={`${className} ${typeBasedClasses(type)}`} onClick={onclick}>
+        <button className={`${className} ${typeBasedClasses(type)}`} onClick={onClick}>
             {children}
         </button>
     )

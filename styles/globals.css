@@ -15,6 +15,10 @@
 
 @layer components {
   .container{
-    @apply max-w-[1440px] mx-auto px-8 md:px-12 lg:px-16 xl:px-24
+    @apply max-w-[1440px] mx-auto px-8 md:px-10 lg:px-16 xl:px-24
   }
+}
+
+.dark-gradiant{
+  background: linear-gradient(113.87deg, #262933 19.52%, #171821 51.03%, #11131A 96.1%);
 }
