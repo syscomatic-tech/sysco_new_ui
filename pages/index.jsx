@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
 import MainLayout from '@/layouts/Main/MainLayout'
-import HeroSection from '@/components/sectionComponents/HeroSection/HeroSection'
+import HeroSection from '@/components/sectionComponents/HeroSection/HeroSection.jsx'
 
 export default function Home() {
   return (

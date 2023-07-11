@@ -24,7 +24,9 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          gradiantCircle: ' linear-gradient(113.87deg, #262933 19.52%, #171821 51.03%, #11131A 96.1%)'
       },
+      
       colors: {
         primary: {
           50: '#EAE8F3',
@@ -51,9 +53,10 @@ module.exports = {
           800: '#040011',
           900: '#03000D',
           DEFAULT: '#07001E'
-        }
+        },
+        darkBg: '#0d0d0d'
       }
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
