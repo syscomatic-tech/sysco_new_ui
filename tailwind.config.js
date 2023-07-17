@@ -12,6 +12,7 @@ module.exports = {
       title: ['Kanit', 'sans-serif']
     },
     fontSize: {
+      sm: '0.9rem',
       base: '1rem',
       lg: '1.125rem',
       xl: '1.25rem',
@@ -23,11 +24,12 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-          gradiantCircle: ' linear-gradient(113.87deg, #262933 19.52%, #171821 51.03%, #11131A 96.1%)'
+        'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        darkGradiantBg: ' linear-gradient(113.87deg, #262933 19.52%, #171821 51.03%, #11131A 96.1%)'
       },
       
       colors: {
+        black: '#262626',
         primary: {
           50: '#EAE8F3',
           100: '#BFB6DA',
@@ -55,7 +57,11 @@ module.exports = {
           DEFAULT: '#07001E'
         },
         darkBg: '#0d0d0d'
-      }
+      },
+      animation: {
+        'slow-spin': 'spin 9s linear infinite',
+        'slow-spin-three': 'spin 19s linear infinite'
+      },
     },
   },
   plugins: [require("daisyui")],

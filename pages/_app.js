@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
   let persistor = persistStore(store)
   return <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <div className='bg-white dark:bg-darkBg'>
+      <div className='bg-white dark:bg-darkBg overflow-hidden absolute top-0 left-0 -z-50 w-full'>
         <div className='container font-primary'>
           <Component {...pageProps} />
         </div>

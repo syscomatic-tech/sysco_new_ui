@@ -1,3 +1,4 @@
+import Footer from '@/components/footer/Footer'
 import Navbar from '@/components/navbar/Navbar'
 import { setTheme } from '@/redux/slices/themeSlice'
 import React, { useEffect } from 'react'
@@ -23,6 +24,7 @@ const MainLayout = ({ children }) => {
     <div>
       <Navbar />
       {children}
+      <Footer/>
     </div>
   )
 }
