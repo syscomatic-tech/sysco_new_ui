@@ -168,7 +168,7 @@ const ProjectsSection = () => {
                 </div>
             </div>
             <div className='flex justify-center mt-12'>
-                <div className='w-[80px] sm:w-[117px] h-[80px] sm:h-[117px] gap-2 rounded-full text-[12px] sm:text-base font-medium border border-[#9C99A5] flex justify-center items-center text-black dark:text-white'>View All
+                <div className='w-[80px] sm:w-[117px] h-[80px] sm:h-[117px] gap-2 rounded-full text-[12px] sm:text-base font-medium border border-lightGray flex justify-center items-center text-black dark:text-white'>View All
                     <svg className='text-black dark:text-white fill-black dark:fill-white' width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.91834 12.5467L0.897949 11.205L7.8949 2.00505H1.6268V0.0883789H10.373V11.5884H8.91529V3.34671L1.91834 12.5467Z" fill="" />
                     </svg>

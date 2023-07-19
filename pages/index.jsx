@@ -14,7 +14,7 @@ import CustomerSection from '@/components/sectionComponents/HomePageSections/Cus
 
 export default function Home() {
   return (
-    <div className='max-w-[1440px] mx-auto'>
+    <div className=''>
       <div className='relative'>
         <MainLayout>
           <HeroSection />

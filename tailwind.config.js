@@ -41,7 +41,7 @@ module.exports = {
           700: '#230F61',
           800: '#1B0C4B',
           900: '#15093A',
-          DEFAULT: '#311589'
+          DEFAULT: '#551FFF'
         },
         background: {
           50: '#E6E6E9',
@@ -56,7 +56,8 @@ module.exports = {
           900: '#03000D',
           DEFAULT: '#07001E'
         },
-        darkBg: '#0d0d0d'
+        darkBg: '#0d0d0d',
+        lightGray: '#9C99A5'
       },
       animation: {
         'slow-spin': 'spin 9s linear infinite',

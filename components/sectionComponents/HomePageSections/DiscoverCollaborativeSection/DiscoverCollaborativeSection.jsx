@@ -90,7 +90,7 @@ const DiscoverCollaborativeSection = () => {
                                 </div>
                                 <div className='text-center sm:text-start'>
                                     <p className=' text-lg font-title text-black dark:text-white font-medium' style={{ color: hoverProcess === item.id && '#551FFF' }}>{item.title}</p>
-                                    <p className={`text-sm  font-title ${hoverProcess === item.id ? 'text-black' : 'text-[#9C99A5]'} dark:${hoverProcess === item.id && 'text-white'}`}>{item.desc}</p>
+                                    <p className={`text-sm  font-title ${hoverProcess === item.id ? 'text-black' : 'text-lightGray'} dark:${hoverProcess === item.id && 'text-white'}`}>{item.desc}</p>
                                 </div>
                             </div>
                             {

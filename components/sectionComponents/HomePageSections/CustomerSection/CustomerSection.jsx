@@ -103,7 +103,7 @@ const CustomerSection = () => {
                         }
                     >
                         {customerSays.map((item, index) => (
-                            <div className=' border border-[#9C99A5] sm:border-[#9C99A5] dark:sm:border-primary px-5 sm:pr-[20%] py-10 max-w-[1000px] w-full flex flex-col-reverse md:flex-col'>
+                            <div className=' border border-lightGray sm:border-lightGray dark:sm:border-primary px-5 sm:pr-[20%] py-10 max-w-[1000px] w-full flex flex-col-reverse md:flex-col'>
                                 <div className='my-5 md:my-0'>
                                     {
                                         screenWidth > 768 ? <svg xmlns="http://www.w3.org/2000/svg" width="67" height="59" viewBox="0 0 74 59" fill="none">
@@ -116,7 +116,7 @@ const CustomerSection = () => {
 
                                     <p className='text-xl md:text-2xl mb-5 font-title text-black dark:text-white mt-5 leading-tight xl:text-4xl'>Onnow has the best ever tech services. They are a great team and their service is top notch. I highly recommend them if you need any tech services!</p>
                                 </div>
-                                <div className='flex items-center flex-col sm:flex-row gap-5 md:gap-8 pb-3 sm:pb-0 border-[#9C99A5] sm:mt-8 border-b sm:border-0'>
+                                <div className='flex items-center flex-col sm:flex-row gap-5 md:gap-8 pb-3 sm:pb-0 border-lightGray sm:mt-8 border-b sm:border-0'>
                                     <div className='relative w-[118px]'>
                                         <Image width={118} height={139} alt='' className='max-h-[139px] w-max sm:mt-5' src={'https://i.ibb.co/d2Gh3Pv/image-2.png" alt="image-2'}></Image>
                                         <svg className='absolute hidden sm:block -top-2 -left-2 -z-10 mt-5' width="117" height="136" viewBox="0 0 117 136" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,7 +132,7 @@ const CustomerSection = () => {
                                     </div>
                                     <div>
                                         <p className='md:text-3xl text-2xl leading-tight text-black dark:text-white font-title font-medium'>Syed Tahmid Zaman</p>
-                                        <p className='text-[#9C99A5] dark:text-white'>Chief Executive Officer, Onnow.io</p>
+                                        <p className='text-lightGray dark:text-white'>Chief Executive Officer, Onnow.io</p>
                                         <Image src={'https://i.ibb.co/pJwCSwb/Group-1.png'} width={162} height={162} alt=''></Image>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@ const CustomerSection = () => {
                         ))}
                     </Carousel>
                 </div>
-                <div className='hidden sm:block border divide-y divide-[#9C99A5] sm:border-[#9C99A5] dark:sm:border-primary dark:sm:divide-primary w-[19.9%] bg-white dark:bg-darkBg h-full absolute top-0 right-0'>
+                <div className='hidden sm:block border divide-y divide-lightGray sm:border-lightGray dark:sm:border-primary dark:sm:divide-primary w-[19.9%] bg-white dark:bg-darkBg h-full absolute top-0 right-0'>
                     <div className='h-1/2'>
 
                     </div>
@@ -148,7 +148,7 @@ const CustomerSection = () => {
 
                     </div>
                 </div>
-                <div className='sm:hidden flex border divide-x divide-[#9C99A5]  border-[#9C99A5] w-full bg-white dark:bg-darkBg absolute bottom-0 h-[40px]'>
+                <div className='sm:hidden flex border divide-x divide-lightGray  border-lightGray w-full bg-white dark:bg-darkBg absolute bottom-0 h-[40px]'>
                     <div className='w-1/2'>
 
                     </div>
