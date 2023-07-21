@@ -41,7 +41,7 @@ const BolgsSecondSection = () => {
                 <div className={`w-[28%] h-full  absolute top-0 right-0`} style={{backgroundColor: blog.bgColor}}></div>
                 <div className={`w-[28%] h-full  absolute top-0 right-[28%] opacity-50`} style={{backgroundColor: blog.bgColor}}></div>
                 <div className='absolute left-[44%] h-full w-full top-0 flex flex-col justify-center max-w-[80%]'>
-                  <p className='text-base sm:text-3xl md:text-4xl xl:text-[32px] text-white font-title leading-tight mb-5 md:mb-9 xl:mb-12'>{blog.title}</p>
+                  <p className=' text-base sm:text-3xl md:text-4xl xl:text-[32px] text-[#AB91FF] dark:text-white font-title leading-tight mb-5 md:mb-9 xl:mb-12'>{blog.title}</p>
                   <Link href={blog.link} className='text-xl flex items-center gap-1 whitespace-nowrap text-white'>See Details <BiRightArrowAlt size={40} /></Link>
                 </div>
               </div>

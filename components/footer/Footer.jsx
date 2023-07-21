@@ -65,8 +65,8 @@ const Footer = () => {
     ]
     return (
         <div className='pt-16 pb-10'>
-            <div className=' flex  flex-wrap justify-center'>
-                <div className='p-5 md:p-12 w-full max-w-[400px] border border-lightGray'>
+            <div className=' flex  flex-wrap lg:flex-nowrap justify-center'>
+                <div className='p-5 md:p-12 w-full max-w-[435px] border border-lightGray'>
                     <div>
                         <svg width="85%" height="53" viewBox="0 0 303 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M152.37 41.6045H146.908C146.007 41.6045 145.561 41.1569 145.561 40.2526V10.0804C145.561 9.17617 146.007 8.72852 146.908 8.72852H152.37C153.271 8.72852 153.718 9.17617 153.718 10.0804V12.2113H153.976C154.494 11.1817 155.36 10.3401 156.582 9.69546C157.805 9.05083 159.206 8.72852 160.795 8.72852H162.598C166.328 8.72852 169.006 10.1073 170.63 12.8559C172.085 10.1073 174.592 8.72852 178.153 8.72852H180.019C183.321 8.72852 185.811 9.63279 187.506 11.4324C189.202 13.2409 190.041 15.8373 190.041 19.2306V40.2526C190.041 41.1569 189.595 41.6045 188.693 41.6045H183.231C182.33 41.6045 181.884 41.1569 181.884 40.2526V19.6245C181.884 18.2457 181.607 17.2698 181.045 16.6879C180.492 16.1059 179.528 15.8194 178.153 15.8194H176.547C173.593 15.8194 172.111 17.4758 172.111 20.7795V40.2526C172.111 41.1569 171.638 41.6045 170.701 41.6045H165.302C164.4 41.6045 163.954 41.1569 163.954 40.2526V19.6245C163.954 18.2457 163.669 17.2698 163.089 16.6879C162.508 16.1059 161.536 15.8194 160.161 15.8194H158.171C155.217 15.8194 153.735 17.4579 153.735 20.7168V40.2526C153.727 41.1569 153.271 41.6045 152.37 41.6045Z" fill="#311589" />
@@ -93,10 +93,10 @@ const Footer = () => {
                         }
                     </div>
                 </div>
-                <div className='grid grid-cols-1 grid-rows-4 divide-y w-full max-w-[400px] border border-lightGray'>
+                <div className='grid grid-cols-1 grid-rows-4 divide-y w-full max-w-[435px] border border-lightGray'>
                     {navigations.map(item => <Link href={item.link} className='text-center py-3 flex justify-center items-center text-xl md:text-2xl font-title text-black dark:text-white'>{item.title}</Link>)}
                 </div>
-                <div className=' flex items-center w-full p-5 md:p-12 max-w-[400px] border border-lightGray'>
+                <div className=' flex items-center w-full p-5 md:p-12 max-w-[435px] border border-lightGray'>
                     <div className='flex flex-col gap-8 max-w-[335px]'>
                         {
                             contacts.map((item, index) => <Link href={item.link} className='flex text-sm md:text-lg gap-7 text-black dark:text-white items-center'><div>
