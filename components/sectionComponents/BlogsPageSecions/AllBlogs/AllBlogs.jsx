@@ -1,6 +1,7 @@
 import Button from '@/components/button/Button'
 import { Butcherman } from 'next/font/google'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 const AllBlogs = () => {
@@ -13,7 +14,7 @@ const AllBlogs = () => {
             authorImg: 'https://i.ibb.co/j67VDBn/Ellipse-6.png',
             authorName: 'Safayat Hussain',
             desc: 'Lorem ipsum dolor, g lonreg njr;esng;kresgkljsne g;rtgklso;gnk bkltnbklghklts glgh;oit sit amet consectetur adipisicing elit. Facilis, molestias autem.',
-            link: '/',
+            link: '/blog/1',
             category: 'Web Development',
         },
         {
@@ -23,7 +24,7 @@ const AllBlogs = () => {
             authorImg: 'https://i.ibb.co/j67VDBn/Ellipse-6.png',
             authorName: 'Safayat Hussain',
             desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, molestias autem.',
-            link: '/',
+            link: '/blog/1',
             category: 'Web Development',
         },
         {
@@ -33,7 +34,7 @@ const AllBlogs = () => {
             authorImg: 'https://i.ibb.co/j67VDBn/Ellipse-6.png',
             authorName: 'Safayat Hussain',
             desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, molestias autem.',
-            link: '/',
+            link: '/blog/1',
             category: 'Web Development',
         },
         {
@@ -43,7 +44,7 @@ const AllBlogs = () => {
             authorImg: 'https://i.ibb.co/j67VDBn/Ellipse-6.png',
             authorName: 'Safayat Hussain',
             desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, molestias autem.',
-            link: '/',
+            link: '/blog/1',
             category: 'Web Development',
         },
         {
@@ -53,7 +54,7 @@ const AllBlogs = () => {
             authorImg: 'https://i.ibb.co/j67VDBn/Ellipse-6.png',
             authorName: 'Safayat Hussain',
             desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, molestias autem.',
-            link: '/',
+            link: '/blog/1',
             category: 'Web Development',
         },
         {
@@ -63,7 +64,7 @@ const AllBlogs = () => {
             authorImg: 'https://i.ibb.co/j67VDBn/Ellipse-6.png',
             authorName: 'Safayat Hussain',
             desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, molestias autem.',
-            link: '/',
+            link: '/blog/1',
             category: 'Web Development',
         },
     ]
@@ -102,7 +103,7 @@ const AllBlogs = () => {
                 {/*  */}
                 {
                     blogs.map(blog =>
-                        <div className='my-10 relative flex flex-col items-end'>
+                        <Link href={blog.link} className='my-10 relative flex flex-col items-end'>
                             <Image className='w-full aspect-[398/250] object-cover' src={blog.thumbnail} width={398} height={250} alt='' />
                             <div className='-my-[20%] p-4 bg-darkGradiantBg w-[89%] h-full flex flex-col justify-between'>
                                 <div>
@@ -126,7 +127,7 @@ const AllBlogs = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     )
                 }
 

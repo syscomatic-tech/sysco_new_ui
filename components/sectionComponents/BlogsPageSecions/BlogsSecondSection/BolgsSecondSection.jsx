@@ -10,19 +10,19 @@ const BolgsSecondSection = () => {
     {
       title: 'Mastering Responsive Web Design: Techniques and Best Practices',
       image: 'https://i.ibb.co/8d5rxjb/Rectangle-4744.png',
-      link: '/',
+      link: '/blog/1',
       bgColor: '#02444F',
     },
     {
       title: 'Mastering Responsive Web Design: Techniques and Best Practices',
       image: 'https://i.ibb.co/0Q1fJJg/Rectangle-4732.png',
-      link: '/',
+      link: '/blog/1',
       bgColor: '#311589',
     },
     {
       title: 'Mastering Responsive Web Design: Techniques and Best Practices',
       image: 'https://i.ibb.co/KDffzj4/Rectangle-4747.png',
-      link: '/',
+      link: '/blog/1',
       bgColor: '#120147',
     },
   ]

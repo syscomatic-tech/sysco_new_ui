@@ -1,4 +1,5 @@
 import Button from '@/components/button/Button'
+import Link from 'next/link'
 import React from 'react'
 
 const LetsStartSection = () => {
@@ -21,7 +22,7 @@ const LetsStartSection = () => {
         </div>
         <p className=' text-xl md:text-2xl lg:text-[40px] font-title text-center font-bold text-white'>Let's start a project!</p>
         <div className='flex justify-center mt-5'>
-          <Button type={'primary-small'}>Get a quote</Button>
+          <Link href={'/quote'}><Button type={'primary-small'}>Get a quote</Button></Link>
         </div>
       </div>
     </div>

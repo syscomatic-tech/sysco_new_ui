@@ -2,7 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 import { SiCrunchbase, SiFacebook } from 'react-icons/si'
 import { ImLinkedin } from 'react-icons/im'
+import { useRouter } from 'next/router'
 const Footer = () => {
+    const router = useRouter()
     const mediaLinks = [
         {
             icon: <SiFacebook/>,
@@ -20,19 +22,19 @@ const Footer = () => {
     const navigations = [
         {
             title: 'About Us',
-            link: '/'
+            link: '/about'
         },
         {
             title: 'Services',
-            link: '/'
+            link: '/services'
         },
         {
             title: 'Portfolio',
-            link: '/'
+            link: '/portfolio'
         },
         {
             title: 'Blogs',
-            link: '/'
+            link: '/blogs'
         },
     ]
     const contacts = [
@@ -64,7 +66,7 @@ const Footer = () => {
         },
     ]
     return (
-        <div className='pt-16 pb-10'>
+        <div className={`pt-16 pb-10 `}>
             <div className=' flex  flex-wrap lg:flex-nowrap justify-center'>
                 <div className='p-5 md:p-12 w-full max-w-[435px] border border-lightGray'>
                     <div>
@@ -109,12 +111,12 @@ const Footer = () => {
             </div>
             <div className='relative '>
                 <p className='text-sm md:text-lg text-lightGray text-center pt-8 font-medium'>All rights reserved to <span className='text-primary font-bold'>Syscomatic™</span> Technologies</p>
-                <div className='absolute right-0 top-5 hidden md:block'>
+                <Link href={router.pathname} className='absolute right-0 top-5 hidden md:block'>
                     <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="33" cy="32" r="19" fill="white" />
                         <path d="M32.5 65C28.232 65 24.0059 64.1594 20.0628 62.5261C16.1197 60.8928 12.5369 58.4989 9.51903 55.481C3.4241 49.386 0 41.1195 0 32.5C0 23.8805 3.4241 15.614 9.51903 9.51903C15.614 3.4241 23.8805 0 32.5 0C36.768 0 40.9941 0.840638 44.9372 2.47392C48.8803 4.10719 52.4631 6.50113 55.481 9.51903C58.4989 12.5369 60.8928 16.1197 62.5261 20.0628C64.1594 24.0059 65 28.232 65 32.5C65 41.1195 61.5759 49.386 55.481 55.481C49.386 61.5759 41.1195 65 32.5 65ZM32.5 16.25L16.25 32.5H26V45.5H39V32.5H48.75L32.5 16.25Z" fill="#311589" />
                     </svg>
-                </div>
+                </Link>
 
             </div>
         </div>

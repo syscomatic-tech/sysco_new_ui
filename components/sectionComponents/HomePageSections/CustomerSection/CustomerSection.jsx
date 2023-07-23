@@ -103,7 +103,7 @@ const CustomerSection = () => {
                         }
                     >
                         {customerSays.map((item, index) => (
-                            <div className=' border border-lightGray sm:border-lightGray dark:sm:border-primary px-5 sm:pr-[20%] py-10 max-w-[1000px] w-full flex flex-col-reverse md:flex-col'>
+                            <div className='ml-1 border border-lightGray sm:border-lightGray dark:sm:border-primary px-5 sm:pr-[20%] py-10 max-w-[1000px] lg:max-w-[1200px] w-full flex flex-col-reverse md:flex-col'>
                                 <div className='my-5 md:my-0'>
                                     {
                                         screenWidth > 768 ? <svg xmlns="http://www.w3.org/2000/svg" width="67" height="59" viewBox="0 0 74 59" fill="none">

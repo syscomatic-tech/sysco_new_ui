@@ -9,7 +9,7 @@ const typeBasedClasses = (type) => {
         case 'primary-large':
             return 'text-xl text-white py-[15px] px-[24px] rounded-[8px] bg-primary font-semibold hover:bg-primary hover:text-white'
         case 'primary-small':
-            return 'py-[10px] px-[24px] rounded-[8px] bg-primary font-semibold hover:bg-primary hover:text-white'
+            return 'py-[10px] px-[24px] rounded-[8px] bg-primary font-semibold text-white hover:bg-primary hover:text-white'
         default:
             'text-lg text-white py-[12px] px-[24px] rounded-[8px] bg-primary font-semibold';
     }
