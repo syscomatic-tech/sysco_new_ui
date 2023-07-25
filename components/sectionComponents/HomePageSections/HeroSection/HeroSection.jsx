@@ -13,7 +13,6 @@ const HeroSection = () => {
                         '\n        .changeHeroTextText::before {\n            content: "Digital Existence";\n            animation: changeText infinite 5s;\n        }\n        @keyframes changeText {\n            0% {\n                content: "Digital Existence";\n            }\n            33% {\n                content: "Scaleble Product";\n            }\n            66% {\n                content: "Technology Business";\n            }\n            100% {\n                content: "Digital Existence";\n            }\n            \n        }\n    '
                 }}
             />
-
             <div className='absolute top-[-150px] left-[-200px] rotate-[120deg] max-w-full'>
                 <SideShade />
             </div>

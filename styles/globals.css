@@ -4,27 +4,47 @@
 @tailwind utilities;
 
 @layer base {
+
   /* H tag font sizes */
-  h1{@apply text-[4.5rem]}
-  h2{@apply text-[4rem]}
-  h3{@apply text-[3.5rem]}
-  h4{@apply text-[3rem]}
-  h5{@apply text-[2.5rem]}
-  h6{@apply text-[2rem]}
+  h1 {
+    @apply text-[4.5rem]
+  }
+
+  h2 {
+    @apply text-[4rem]
+  }
+
+  h3 {
+    @apply text-[3.5rem]
+  }
+
+  h4 {
+    @apply text-[3rem]
+  }
+
+  h5 {
+    @apply text-[2.5rem]
+  }
+
+  h6 {
+    @apply text-[2rem]
+  }
 }
 
 @layer components {
-  .container{
+  .container {
     @apply max-w-[1440px] mx-auto px-8 md:px-10 lg:px-16 2xl:px-24
   }
-  .section-heading{
-   @apply text-2xl md:text-4xl xl:text-[40px] font-medium font-title
+
+  .section-heading {
+    @apply text-2xl md:text-4xl xl:text-[40px] font-medium font-title
   }
 }
 
-.dark-gradiant{
+.dark-gradiant {
   background: linear-gradient(113.87deg, #262933 19.52%, #171821 51.03%, #11131A 96.1%);
 }
-.outline-text{
+
+.outline-text {
   -webkit-text-stroke: 0.5px #9C99A5;
 }

@@ -45,7 +45,7 @@ const ServicesDetails = () => {
                     <div>
                         <div className='max-w-[570px] flex gap-5 md:gap-6 xl:gap-7'>
                             <p className='text-xl md:text-[40px] xl:text-[62px] text-black dark:text-white font-title leading-tight'>{index < 10 ? '0' + (index + 1) : index + 1}</p>
-                            <p className='text-xl md:text-[40px] xl:text-[62px] text-primary font-title leading-tight'>{service.service}</p>
+                            <p className='text-xl md:text-[40px] xl:text-[62px] text-primary-light font-title leading-tight'>{service.service}</p>
                         </div>
                         <p className='text-base md:text-xl xl:text-[32px] leading-tight max-w-[914px] mt-8 text-black dark:text-white'>{service.desc}</p>
                     </div>
