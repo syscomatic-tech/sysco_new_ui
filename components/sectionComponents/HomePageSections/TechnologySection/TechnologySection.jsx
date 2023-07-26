@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Marquee from 'react-fast-marquee'
 
 
 const TechnologySection = () => {
@@ -124,7 +125,7 @@ const TechnologySection = () => {
         Unleash the Power of Our Preferred Technology
       </h5>
       <div className='py-12 flex flex-col gap-12'>
-        <div className='h-[155px] relative grid place-items-center max-w-[1440px] overflow-hidden before:content-none after:absolute before:absolute before:top-0 before:left-0 after:top-0 after:right-0 after:content-none '>
+        {/* <div className='h-[155px] relative grid place-items-center max-w-[1440px] overflow-hidden before:content-none after:absolute before:absolute before:top-0 before:left-0 after:top-0 after:right-0 after:content-none '>
           <div className={`flex scroll-track-1 gap-16`}>
             {
               technologies[0].track1?.map(technology =>
@@ -145,7 +146,25 @@ const TechnologySection = () => {
                 </div>
               )}
           </div>
-        </div>
+        </div> */}
+        <Marquee speed={110}>
+          {
+            technologies[0].track1?.map(technology =>
+              <div className='flex flex-col justify-center w-[160px] h-[155px] items-center gap-3 bg-darkGradiantBg rounded-md mx-5'>
+                <Image src={technology.img} width={50} height={50} alt='' />
+                <p className='text-white whitespace-nowrap font-title text-xl'>{technology.title}</p>
+              </div>
+            )}
+        </Marquee>
+        <Marquee speed={110} direction='right'>
+          {
+            technologies[1].track2?.map(technology =>
+              <div className='flex flex-col justify-center w-[160px] h-[155px] items-center gap-3 bg-darkGradiantBg rounded-md mx-5'>
+                <Image src={technology.img} width={50} height={50} alt='' />
+                <p className='text-white whitespace-nowrap font-title text-xl'>{technology.title}</p>
+              </div>
+            )}
+        </Marquee>
       </div>
     </div>
   </div>
