@@ -9,7 +9,7 @@ const GradiantCircle = ({ size, className }) => {
             < style
                 dangerouslySetInnerHTML={{
                     __html:
-                        "\n  .gradiant-circle {\n  animation: circleAnimation infinite 5s;\n}\n\n@keyframes circleAnimation {\n  0% {\n   margin-right: 0px;\n  }\n\n 50% {\n   margin-right: 7px;\n\n  }\n  100% {\n   margin-right: 0px;\n\n  }\n}\n"
+                        "\n  .gradiant-circle {\n  animation: circleAnimation infinite 4s;\n}\n\n@keyframes circleAnimation {\n  0% {\n   margin-right: 0px;\n  }\n\n 50% {\n   margin-right: 7px;\n\n  }\n  100% {\n   margin-right: 0px;\n\n  }\n}\n"
                 }
                 }
             />

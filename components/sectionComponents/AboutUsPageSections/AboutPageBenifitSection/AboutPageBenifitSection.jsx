@@ -144,9 +144,6 @@ const AboutPageBenifitSection = () => {
                     )
                 }
             </div>
-            <div className='relative'>
-                <SideShade className={'absolute left-[-200px] sm:left-[-400px] bottom-[-300px] rotate-90'} />
-            </div>
         </div>
     )
 }

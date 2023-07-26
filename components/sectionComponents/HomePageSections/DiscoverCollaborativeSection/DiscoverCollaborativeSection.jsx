@@ -10,7 +10,7 @@ const DiscoverCollaborativeSection = () => {
     useEffect(() => {
         if (theme === 'dark') {
             sethoverColor('#FFFFFF')
-        }else{
+        } else {
             sethoverColor('#0D0D0D')
 
         }
@@ -95,40 +95,42 @@ const DiscoverCollaborativeSection = () => {
                             </div>
                             {
                                 item.id !== 7 &&
-                            <div className='sm:flex flex-col hidden'>
-                                <div className='w-[2px] -mb-1 rounded-b-full h-[100px] md:h-[130px] xl:h-[130px] bg-[#252832]'>
+                                <div className='sm:flex flex-col hidden'>
+                                    <div className='w-[2px] -mb-1 rounded-b-full h-[100px] md:h-[130px] xl:h-[130px] bg-[#252832]'>
 
-                                </div>
-                                <div>
-                                    <IoIosArrowBack size={20} fontWeight={700} className='text-primary -ml-1.5 z-10 rotate-180' />
-                                </div>
-                                <div className='w-[2px] -mt-1 rounded-t-full h-[100px] md:h-[130px] xl:h-[130px] bg-[#252832]'>
+                                    </div>
+                                    <div>
+                                        <IoIosArrowBack size={20} fontWeight={700} className='text-primary -ml-1.5 z-10 rotate-180' />
+                                    </div>
+                                    <div className='w-[2px] -mt-1 rounded-t-full h-[100px] md:h-[130px] xl:h-[130px] bg-[#252832]'>
 
+                                    </div>
                                 </div>
-                            </div>
                             }
                         </div>
                         {
                             item.id !== 7 &&
-                        <div className='sm:hidden flex pb-9 pt-3'>
-                            <div className='h-[1.9px] -mr-1 rounded-b-full w-full bg-[#252832]'>
+                            <div className='sm:hidden flex pb-9 pt-3'>
+                                <div className='h-[1.9px] -mr-1 rounded-b-full w-full bg-[#252832]'>
 
-                            </div>
-                            <div>
-                                <IoIosArrowBack size={20} className='text-primary -mt-1.5 z-10 -rotate-90' />
-                            </div>
-                            <div className='h-[1.9px] -ml-1 rounded-t-full w-full bg-[#252832]'>
+                                </div>
+                                <div>
+                                    <IoIosArrowBack size={20} className='text-primary -mt-1.5 z-10 -rotate-90' />
+                                </div>
+                                <div className='h-[1.9px] -ml-1 rounded-t-full w-full bg-[#252832]'>
 
+                                </div>
                             </div>
-                        </div>
                         }
                     </div>
                 )
                 }
             </div>
+            <div className='w-screen relative left-[-20vw] 5xl:left-[-35vw] 10xl:left-[-40vw]'>
 
-            <div className='absolute top-112 left-[-500px] rotate-[100deg] hidden lg:block'>
-                <SideShade className={'w-[1000px]'} />
+                <div className='absolute top-112 left-[-500px] rotate-[100deg] hidden lg:block'>
+                    <SideShade className={'w-[1000px]'} />
+                </div>
             </div>
         </div>
     )

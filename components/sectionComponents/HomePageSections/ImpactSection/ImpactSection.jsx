@@ -37,8 +37,11 @@ const ImpactSection = () => {
         </div>
         <ImpactSectionSolarPanel />
       </div>
+      <div className='w-full relative right-[-15vw] 2xl:right-[-22vw] 5xl:right-[-35vw] 10xl:right-[-40vw]'>
       <div className='absolute -bottom-[600px] lg:bottom-0 right-[-300px] xl:right-[-200px]'>
         <SideShade />
+      </div>
+
       </div>
     </div>
   )

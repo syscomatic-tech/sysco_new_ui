@@ -1,3 +1,4 @@
+import SideShade from '@/components/shapes/SideShade'
 import Image from 'next/image'
 import React from 'react'
 
@@ -54,6 +55,11 @@ const AboutPageTeamSection = () => {
     ]
     return (
         <div className='pt-20 mb-20 relative'>
+            <div className='w-screen relative left-[-20vw] 5xl:left-[-35vw] 10xl:left-[-40vw]'>
+                <div className='absolute top-[250px] left-[-200px] rotate-[120deg] max-w-full'>
+                    <SideShade />
+                </div>
+            </div>
             <div className='block dark:hidden bg-[#121315] max-h-[full] absolute left-[-5000px] w-[10000px] h-full z-[-1]'>
             </div>
             <div className='absolute top-60 z-[-1] left-0 lg:block hidden dark:hidden'>
@@ -62,9 +68,9 @@ const AboutPageTeamSection = () => {
                 </svg>
             </div>
             <div className='absolute bottom-20 z-[-1] left-0 lg:block hidden dark:hidden'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="205" viewBox="0 0 1440 205" fill="none">
-  <path d="M-113 113.708C-2.13898 45.0418 256.053 -63.5916 475.328 51.2084C749.422 194.708 877.377 156.168 1079.14 51.2084C1248.3 -36.791 1532.68 121.534 1592.89 204.034" stroke="white" stroke-opacity="0.7" stroke-dasharray="8 8"/>
-</svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="205" viewBox="0 0 1440 205" fill="none">
+                    <path d="M-113 113.708C-2.13898 45.0418 256.053 -63.5916 475.328 51.2084C749.422 194.708 877.377 156.168 1079.14 51.2084C1248.3 -36.791 1532.68 121.534 1592.89 204.034" stroke="white" stroke-opacity="0.7" stroke-dasharray="8 8" />
+                </svg>
             </div>
             <div>
                 <h5 className='text-white section-heading text-center pt-12'>Meet Our Team</h5>
