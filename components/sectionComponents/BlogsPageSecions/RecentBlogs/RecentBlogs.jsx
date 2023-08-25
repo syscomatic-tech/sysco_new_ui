@@ -27,7 +27,7 @@ const RecentBlogs = () => {
                 <div className='grid grid-rows-2 grid-cols-6 lg:grid-cols-5 gap-5'>
                     {
                         blogs.map((blog, index) =>
-                            <Link href={blog.link} className={`relative ${index === 0 ? 'col-span-6 lg:col-span-3 row-span-2' : 'col-span-6 sm:col-span-3 lg:col-span-2'} `}>
+                            <Link href={blog.link} key={index} className={`relative ${index === 0 ? 'col-span-6 lg:col-span-3 row-span-2' : 'col-span-6 sm:col-span-3 lg:col-span-2'} `}>
                                 <Image src={'https://i.ibb.co/sR9nMmT/Rectangle-4740.png'} width={730} className='w-full h-full object-cover' height={674} alt={''} />
                                 <div className='absolute bottom-0 w-full'>
                                     <Image src={'/assets/blogs/populerBlogsBottomBG.png'} className='w-full' width={730} height={150} alt='' />

@@ -1,11 +1,19 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import Carousel from 'nuka-carousel'
+import axios from 'axios';
 
 const CustomerSection = () => {
     const [screenWidth, setScreenWidth] = useState(null);
     const [counter, setCounter] = useState(0);
-
+    const [data, setData] = useState({});
+    useEffect(() => {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/customer_says?locale=en`)
+        .then((res) => {
+          setData(res?.data?.docs[0]);
+        });
+    }, []);
     useEffect(() => {
         const interval = setInterval(() => {
             setCounter((counter) => counter + 1);
@@ -26,39 +34,9 @@ const CustomerSection = () => {
             window.removeEventListener("resize", handleResize);
         };
     }, [screenWidth, counter]);
-    const customerSays = [
-        {
-            img: 'https://i.ibb.co/d2Gh3Pv/image-2.png',
-            name: 'Syed Tahmid Zaman',
-            postion: 'Chief Executive Officer, Onnow.io',
-            brandLogo: 'https://i.ibb.co/pJwCSwb/Group-1.png',
-            text: 'Onnow has the best ever tech services. They are a great team and their service is top notch. I highly recommend them if you need any tech services!',
-        },
-        {
-            img: 'https://i.ibb.co/d2Gh3Pv/image-2.png',
-            name: 'Syed Tahmid Zaman',
-            postion: 'Chief Executive Officer, Onnow.io',
-            brandLogo: 'https://i.ibb.co/pJwCSwb/Group-1.png',
-            text: 'Onnow has the best ever tech services. They are a great team and their service is top notch. I highly recommend them if you need any tech services!',
-        },
-        {
-            img: 'https://i.ibb.co/d2Gh3Pv/image-2.png',
-            name: 'Syed Tahmid Zaman',
-            postion: 'Chief Executive Officer, Onnow.io',
-            brandLogo: 'https://i.ibb.co/pJwCSwb/Group-1.png',
-            text: 'Onnow has the best ever tech services. They are a great team and their service is top notch. I highly recommend them if you need any tech services!',
-        },
-        {
-            img: 'https://i.ibb.co/d2Gh3Pv/image-2.png',
-            name: 'Syed Tahmid Zaman',
-            postion: 'Chief Executive Officer, Onnow.io',
-            brandLogo: 'https://i.ibb.co/pJwCSwb/Group-1.png',
-            text: 'Onnow has the best ever tech services. They are a great team and their service is top notch. I highly recommend them if you need any tech services!',
-        },
-    ]
     return (
         <div className='py-12'>
-            <h5 className='section-heading text-black dark:text-white text-center'>What Our Customer Says</h5>
+            <h5 className='section-heading text-black dark:text-white text-center'>{data?.title}</h5>
             <div className='relative mt-12'>
                 <div>
                     <Carousel
@@ -70,7 +48,7 @@ const CustomerSection = () => {
                         wrapAround={true}
                         renderBottomCenterControls={false}
                         renderCenterLeftControls={
-                            customerSays.length > 2
+                            data?.customer_says?.length > 0
                                 ? ({ previousSlide }) => (
                                     <svg
                                         className='absolute z-30 bottom-2.5 sm:bottom-[25%] left-[20%] sm:left-auto sm:right-[6%]'
@@ -80,13 +58,13 @@ const CustomerSection = () => {
                                         fill="none"
                                         onClick={previousSlide}
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M1 11L10 20L11.775 18.225L4.55 11L93 11V9L4.55 9L11.775 1.775L10 0L1 9L0 10L1 11Z" fill="#9C99A5" />
+                                        <path opacity="0.5" fillRule="evenodd" clipRule="evenodd" d="M1 11L10 20L11.775 18.225L4.55 11L93 11V9L4.55 9L11.775 1.775L10 0L1 9L0 10L1 11Z" fill="#9C99A5" />
                                     </svg>
                                 )
                                 : false
                         }
                         renderCenterRightControls={
-                            customerSays.length > 2
+                            data?.customer_says?.length > 0
                                 ? ({ nextSlide }) => (
                                     <svg
                                         className='absolute bottom-2.5 sm:top-[25%] z-30 right-[20%]  sm:right-[6%] rotate-180'
@@ -96,14 +74,14 @@ const CustomerSection = () => {
                                         fill="none"
                                         onClick={nextSlide}
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M1 11L10 20L11.775 18.225L4.55 11L93 11V9L4.55 9L11.775 1.775L10 0L1 9L0 10L1 11Z" fill="#9C99A5" />
+                                        <path opacity="0.5" fillRule="evenodd" clipRule="evenodd" d="M1 11L10 20L11.775 18.225L4.55 11L93 11V9L4.55 9L11.775 1.775L10 0L1 9L0 10L1 11Z" fill="#9C99A5" />
                                     </svg>
                                 )
                                 : false
                         }
                     >
-                        {customerSays.map((item, index) => (
-                            <div className='ml-1 border border-lightGray sm:border-lightGray dark:sm:border-primary px-5 sm:pr-[20%] py-10 max-w-[1000px] lg:max-w-[1200px] w-full flex flex-col-reverse md:flex-col'>
+                        {data?.customer_says?.map((item, index) => (
+                            <div key={index} className='ml-0 sm:ml-1 border border-lightGray sm:border-lightGray dark:sm:border-primary px-5 sm:pr-[20%] py-10 max-w-[1000px] lg:max-w-[1200px] w-full flex flex-col-reverse md:flex-col'>
                                 <div className='my-5 md:my-0'>
                                     {
                                         screenWidth > 768 ? <svg xmlns="http://www.w3.org/2000/svg" width="67" height="59" viewBox="0 0 74 59" fill="none">
@@ -114,26 +92,26 @@ const CustomerSection = () => {
                                             </svg>
                                     }
 
-                                    <p className='text-xl md:text-2xl mb-5 font-title text-black dark:text-white mt-5 leading-tight xl:text-4xl'>Onnow has the best ever tech services. They are a great team and their service is top notch. I highly recommend them if you need any tech services!</p>
+                                    <p className='text-xl md:text-2xl mb-5 font-title text-black dark:text-white mt-5 leading-tight xl:text-4xl'>{item?.message}</p>
                                 </div>
                                 <div className='flex items-center flex-col sm:flex-row gap-5 md:gap-8 pb-3 sm:pb-0 border-lightGray sm:mt-8 border-b sm:border-0'>
                                     <div className='relative w-[118px]'>
-                                        <Image width={118} height={139} alt='' className='max-h-[139px] w-max sm:mt-5' src={'https://i.ibb.co/d2Gh3Pv/image-2.png" alt="image-2'}></Image>
+                                        <img width={118} height={139} alt='' className='max-h-[139px] w-max sm:mt-5' src={item?.customer_image}></img>
                                         <svg className='absolute hidden sm:block -top-2 -left-2 -z-10 mt-5' width="117" height="136" viewBox="0 0 117 136" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <rect width="116.667" height="135.333" fill="url(#paint0_linear_753_15017)" />
                                             <defs>
                                                 <linearGradient id="paint0_linear_753_15017" x1="22.7193" y1="26.5388" x2="135.231" y2="69.4544" gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="#262933" />
-                                                    <stop offset="0.411458" stop-color="#171821" />
-                                                    <stop offset="1" stop-color="#11131A" />
+                                                    <stop stopColor="#262933" />
+                                                    <stop offset="0.411458" stopColor="#171821" />
+                                                    <stop offset="1" stopColor="#11131A" />
                                                 </linearGradient>
                                             </defs>
                                         </svg>
                                     </div>
                                     <div>
-                                        <p className='md:text-3xl text-2xl leading-tight text-black dark:text-white font-title font-medium'>Syed Tahmid Zaman</p>
-                                        <p className='text-lightGray dark:text-white'>Chief Executive Officer, Onnow.io</p>
-                                        <Image src={'https://i.ibb.co/pJwCSwb/Group-1.png'} width={162} height={162} alt=''></Image>
+                                        <p className='md:text-3xl text-2xl leading-tight text-black dark:text-white font-title font-medium'>{item?.customer_name}</p>
+                                        <p className='text-lightGray dark:text-white mb-2'>{item?.customer_position}</p>
+                                        <Image src={item?.brand_img?.url} width={162} height={162} alt=''></Image>
                                     </div>
                                 </div>
                             </div>

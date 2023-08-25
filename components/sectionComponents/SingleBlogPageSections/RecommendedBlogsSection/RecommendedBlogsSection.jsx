@@ -38,8 +38,8 @@ const RecommendedBlogsSection = () => {
     <div className='mt-8 mb-24 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-10 sm:gap-y-[100px] md:gap-y-12 xl:gap-y-8'>
                     {/*  */}
                     {
-                        recentBlogs.map(blog =>
-                            <div className='my-10 relative flex flex-col items-end'>
+                        recentBlogs.map((blog,index) =>
+                            <div key={index} className='my-10 relative flex flex-col items-end'>
                                 <Image className='w-full aspect-[398/250] object-cover' src={blog.thumbnail} width={398} height={250} alt='' />
                                 <div className='-my-[20%] p-4 bg-darkGradiantBg w-[89%] h-full flex flex-col justify-between'>
                                     <div>

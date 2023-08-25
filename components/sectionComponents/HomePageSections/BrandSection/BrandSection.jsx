@@ -1,33 +1,26 @@
+import axios from "axios";
 import Link from "next/link";
 import Carousel from "nuka-carousel";
 import React, { useEffect, useState } from "react";
 const BrandsSection = () => {
-  const brandImages = [
-    ["/assets/brands/onnow.png", 'https://app.onnow.io/login/'],
-    ["/assets/brands/buet.png", 'https://hum.buet.ac.bd/'],
-    ["/assets/brands/du.png", 'https://criminology.du.ac.bd/'],
-    ["/assets/brands/tunibibi.png", 'https://tunibibi.com/'],
-    ["/assets/brands/seaqua.png", 'https://seaqua.io'],
-    ["/assets/brands/fuel.png", 'https://uftl.syscomatic.com/'],
-    ["/assets/brands/tradematrix.png", 'https://www.tradematrixsoftware.com'],
-    ["/assets/brands/readvive.png", 'https://readvive-web-three.vercel.app'],
-    ["/assets/brands/poc.png", ''],
-    
-    ["/assets/brands/onnow.png", 'https://app.onnow.io/login/'],
-    ["/assets/brands/buet.png", 'https://hum.buet.ac.bd/'],
-    ["/assets/brands/du.png", 'https://criminology.du.ac.bd/'],
-    ["/assets/brands/tunibibi.png", 'https://tunibibi.com/'],
-    ["/assets/brands/seaqua.png", 'https://seaqua.io'],
-    ["/assets/brands/fuel.png", 'https://uftl.syscomatic.com/'],
-    ["/assets/brands/tradematrix.png", 'https://www.tradematrixsoftware.com'],
-    ["/assets/brands/readvive.png", 'https://readvive-web-three.vercel.app'],
-    ["/assets/brands/poc.png", ''],
-  ];
-
+  const [data, setData] = useState([]);
   const [screenWidth, setScreenWidth] = useState(null);
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
+    axios
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/brands?locale=en`)
+    .then((res) => {
+      let brandDouble = []
+      res?.data?.docs?.map(brand => {
+        brandDouble.push(brand);
+      })
+      res?.data?.docs?.map(brand => {
+        brandDouble.push(brand);
+      })
+      setData(brandDouble);
+    });
+    // 
     const interval = setInterval(() => {
       setCounter((counter) => counter + 1);
     }, 1000);
@@ -48,11 +41,11 @@ const BrandsSection = () => {
     };
   }, [screenWidth, counter]);
   return (
-    <div class="" id="services">
-      <div class="py-12">
-        <div class="-mx-4 flex flex-wrap">
-          <div class="w-full ">
-            {/* <div class="flex flex-wrap items-center justify-between"> */}
+    <div className="" id="services">
+      <div className="py-12">
+        <div className="-mx-4 flex flex-wrap">
+          <div className="w-full ">
+            {/* <div className="flex flex-wrap items-center justify-between"> */}
             <Carousel
               // animation="fade"
               autoplay
@@ -63,7 +56,7 @@ const BrandsSection = () => {
               wrapAround={true}
               renderBottomCenterControls={false}
               renderCenterLeftControls={
-                brandImages.length > 6
+                data?.length > 6
                   ? ({ previousSlide }) => (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +78,7 @@ const BrandsSection = () => {
                   : false
               }
               renderCenterRightControls={
-                brandImages.length > 6
+                data?.length > 6
                   ? ({ nextSlide }) => (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -107,16 +100,16 @@ const BrandsSection = () => {
                   : false
               }
             >
-              {brandImages.map((item, index) => (
+              {data?.map((item, index) => (
                 <a
                   key={index}
-                  href={`${item[1]}`}
+                  href={`${item?.website}`}
                   className="flex h-9 sm:h-[50px] items-center mx-auto justify-center"
                   data-aos-delay={50 + index * 100}
                   data-aos="fade-up"
                   target='blank'
                 >
-                  <img src={item[0]} alt="image" className="h-full" />
+                  <img src={item?.logo?.url} alt="image" className="h-full" />
                 </a>
               ))}
             </Carousel>

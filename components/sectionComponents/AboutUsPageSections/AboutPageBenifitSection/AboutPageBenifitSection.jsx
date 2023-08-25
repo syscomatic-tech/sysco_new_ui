@@ -1,144 +1,38 @@
 import SideShade from '@/components/shapes/SideShade'
+import axios from 'axios';
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const AboutPageBenifitSection = () => {
-    const benifits = [
-        {
-            title: 'Initiative',
-            description: 'Our team believes in taking proactive actions and going the extra mile, and it shows in the quality of the work we do.',
-            icon: <svg xmlns="http://www.w3.org/2000/svg" width="101" height="20%" viewBox="0 0 101 101" fill="none">
-                <path d="M50.6611 96.332C75.9741 96.332 96.4944 75.8117 96.4944 50.4987C96.4944 25.1856 75.9741 4.66538 50.6611 4.66538C25.348 4.66538 4.82773 25.1856 4.82773 50.4987C4.82773 75.8117 25.348 96.332 50.6611 96.332Z" fill="url(#paint0_linear_665_3150)" stroke="url(#paint1_linear_665_3150)" stroke-width="8.33331" />
-                <path d="M70.1794 31.0035C62.3713 30.8635 53.4665 34.9451 47.8299 41.2766C42.4434 41.3783 37.1985 43.5865 33.3369 47.4481C33.1119 47.6698 33.0319 48.0014 33.1303 48.3014C33.2303 48.6031 33.4903 48.8214 33.8036 48.8664L40.2268 49.7864L39.4334 50.6747C39.1385 51.0047 39.1535 51.5064 39.4668 51.8197L50.1782 62.5311C50.3399 62.6928 50.5532 62.7744 50.7682 62.7744C50.9665 62.7744 51.1648 62.7044 51.3232 62.5628L52.2115 61.7695L53.1315 68.1926C53.1765 68.506 53.4231 68.736 53.7215 68.836C53.7981 68.861 53.8781 68.8726 53.9598 68.8726C54.1964 68.8726 54.4381 68.7693 54.6048 68.6043C58.413 64.7961 60.6213 59.5512 60.723 54.1646C67.0612 48.5164 71.1761 39.615 70.9944 31.8168C70.9827 31.3735 70.6244 31.0152 70.1794 31.0035ZM62.4996 45.3898C61.6879 46.2015 60.6213 46.6081 59.553 46.6081C58.4847 46.6081 57.418 46.2015 56.6064 45.3898C54.9831 43.7649 54.9831 41.1216 56.6064 39.4966C58.2314 37.8717 60.8746 37.8717 62.4996 39.4966C64.1246 41.1216 64.1246 43.7665 62.4996 45.3898Z" fill="white" />
-                <path d="M35.5397 59.1726C33.7565 60.9559 31.3082 69.0124 31.0349 69.924C30.9465 70.2173 31.0282 70.5357 31.2432 70.7523C31.4032 70.9123 31.6148 70.9973 31.8332 70.9973C31.9132 70.9973 31.9932 70.9856 32.0732 70.9623C32.9848 70.689 41.0413 68.2407 42.8246 66.4574C44.8329 64.4491 44.8329 61.1809 42.8246 59.1726C40.8146 57.1643 37.548 57.166 35.5397 59.1726Z" fill="white" />
-                <defs>
-                    <linearGradient id="paint0_linear_665_3150" x1="50.6611" y1="8.83203" x2="50.6611" y2="92.1653" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.229167" stop-color="#551FFF" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient id="paint1_linear_665_3150" x1="25.2225" y1="25.1736" x2="102.209" y2="59.2372" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#262933" />
-                        <stop offset="0.411458" stop-color="#171821" />
-                        <stop offset="1" stop-color="#11131A" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        },
-        {
-            title: 'Initiative',
-            description: 'Our team believes in taking proactive actions and going the extra mile, and it shows in the quality of the work we do.',
-            icon: <svg xmlns="http://www.w3.org/2000/svg" width="101" height="20%" viewBox="0 0 101 101" fill="none">
-                <path d="M50.6611 96.332C75.9741 96.332 96.4944 75.8117 96.4944 50.4987C96.4944 25.1856 75.9741 4.66538 50.6611 4.66538C25.348 4.66538 4.82773 25.1856 4.82773 50.4987C4.82773 75.8117 25.348 96.332 50.6611 96.332Z" fill="url(#paint0_linear_665_3150)" stroke="url(#paint1_linear_665_3150)" stroke-width="8.33331" />
-                <path d="M70.1794 31.0035C62.3713 30.8635 53.4665 34.9451 47.8299 41.2766C42.4434 41.3783 37.1985 43.5865 33.3369 47.4481C33.1119 47.6698 33.0319 48.0014 33.1303 48.3014C33.2303 48.6031 33.4903 48.8214 33.8036 48.8664L40.2268 49.7864L39.4334 50.6747C39.1385 51.0047 39.1535 51.5064 39.4668 51.8197L50.1782 62.5311C50.3399 62.6928 50.5532 62.7744 50.7682 62.7744C50.9665 62.7744 51.1648 62.7044 51.3232 62.5628L52.2115 61.7695L53.1315 68.1926C53.1765 68.506 53.4231 68.736 53.7215 68.836C53.7981 68.861 53.8781 68.8726 53.9598 68.8726C54.1964 68.8726 54.4381 68.7693 54.6048 68.6043C58.413 64.7961 60.6213 59.5512 60.723 54.1646C67.0612 48.5164 71.1761 39.615 70.9944 31.8168C70.9827 31.3735 70.6244 31.0152 70.1794 31.0035ZM62.4996 45.3898C61.6879 46.2015 60.6213 46.6081 59.553 46.6081C58.4847 46.6081 57.418 46.2015 56.6064 45.3898C54.9831 43.7649 54.9831 41.1216 56.6064 39.4966C58.2314 37.8717 60.8746 37.8717 62.4996 39.4966C64.1246 41.1216 64.1246 43.7665 62.4996 45.3898Z" fill="white" />
-                <path d="M35.5397 59.1726C33.7565 60.9559 31.3082 69.0124 31.0349 69.924C30.9465 70.2173 31.0282 70.5357 31.2432 70.7523C31.4032 70.9123 31.6148 70.9973 31.8332 70.9973C31.9132 70.9973 31.9932 70.9856 32.0732 70.9623C32.9848 70.689 41.0413 68.2407 42.8246 66.4574C44.8329 64.4491 44.8329 61.1809 42.8246 59.1726C40.8146 57.1643 37.548 57.166 35.5397 59.1726Z" fill="white" />
-                <defs>
-                    <linearGradient id="paint0_linear_665_3150" x1="50.6611" y1="8.83203" x2="50.6611" y2="92.1653" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.229167" stop-color="#551FFF" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient id="paint1_linear_665_3150" x1="25.2225" y1="25.1736" x2="102.209" y2="59.2372" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#262933" />
-                        <stop offset="0.411458" stop-color="#171821" />
-                        <stop offset="1" stop-color="#11131A" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        },
-        {
-            title: 'Initiative',
-            description: 'Our team believes in taking proactive actions and going the extra mile, and it shows in the quality of the work we do.',
-            icon: <svg xmlns="http://www.w3.org/2000/svg" width="101" height="20%" viewBox="0 0 101 101" fill="none">
-                <path d="M50.6611 96.332C75.9741 96.332 96.4944 75.8117 96.4944 50.4987C96.4944 25.1856 75.9741 4.66538 50.6611 4.66538C25.348 4.66538 4.82773 25.1856 4.82773 50.4987C4.82773 75.8117 25.348 96.332 50.6611 96.332Z" fill="url(#paint0_linear_665_3150)" stroke="url(#paint1_linear_665_3150)" stroke-width="8.33331" />
-                <path d="M70.1794 31.0035C62.3713 30.8635 53.4665 34.9451 47.8299 41.2766C42.4434 41.3783 37.1985 43.5865 33.3369 47.4481C33.1119 47.6698 33.0319 48.0014 33.1303 48.3014C33.2303 48.6031 33.4903 48.8214 33.8036 48.8664L40.2268 49.7864L39.4334 50.6747C39.1385 51.0047 39.1535 51.5064 39.4668 51.8197L50.1782 62.5311C50.3399 62.6928 50.5532 62.7744 50.7682 62.7744C50.9665 62.7744 51.1648 62.7044 51.3232 62.5628L52.2115 61.7695L53.1315 68.1926C53.1765 68.506 53.4231 68.736 53.7215 68.836C53.7981 68.861 53.8781 68.8726 53.9598 68.8726C54.1964 68.8726 54.4381 68.7693 54.6048 68.6043C58.413 64.7961 60.6213 59.5512 60.723 54.1646C67.0612 48.5164 71.1761 39.615 70.9944 31.8168C70.9827 31.3735 70.6244 31.0152 70.1794 31.0035ZM62.4996 45.3898C61.6879 46.2015 60.6213 46.6081 59.553 46.6081C58.4847 46.6081 57.418 46.2015 56.6064 45.3898C54.9831 43.7649 54.9831 41.1216 56.6064 39.4966C58.2314 37.8717 60.8746 37.8717 62.4996 39.4966C64.1246 41.1216 64.1246 43.7665 62.4996 45.3898Z" fill="white" />
-                <path d="M35.5397 59.1726C33.7565 60.9559 31.3082 69.0124 31.0349 69.924C30.9465 70.2173 31.0282 70.5357 31.2432 70.7523C31.4032 70.9123 31.6148 70.9973 31.8332 70.9973C31.9132 70.9973 31.9932 70.9856 32.0732 70.9623C32.9848 70.689 41.0413 68.2407 42.8246 66.4574C44.8329 64.4491 44.8329 61.1809 42.8246 59.1726C40.8146 57.1643 37.548 57.166 35.5397 59.1726Z" fill="white" />
-                <defs>
-                    <linearGradient id="paint0_linear_665_3150" x1="50.6611" y1="8.83203" x2="50.6611" y2="92.1653" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.229167" stop-color="#551FFF" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient id="paint1_linear_665_3150" x1="25.2225" y1="25.1736" x2="102.209" y2="59.2372" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#262933" />
-                        <stop offset="0.411458" stop-color="#171821" />
-                        <stop offset="1" stop-color="#11131A" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        },
-        {
-            title: 'Initiative',
-            description: 'Our team believes in taking proactive actions and going the extra mile, and it shows in the quality of the work we do.',
-            icon: <svg xmlns="http://www.w3.org/2000/svg" width="101" height="20%" viewBox="0 0 101 101" fill="none">
-                <path d="M50.6611 96.332C75.9741 96.332 96.4944 75.8117 96.4944 50.4987C96.4944 25.1856 75.9741 4.66538 50.6611 4.66538C25.348 4.66538 4.82773 25.1856 4.82773 50.4987C4.82773 75.8117 25.348 96.332 50.6611 96.332Z" fill="url(#paint0_linear_665_3150)" stroke="url(#paint1_linear_665_3150)" stroke-width="8.33331" />
-                <path d="M70.1794 31.0035C62.3713 30.8635 53.4665 34.9451 47.8299 41.2766C42.4434 41.3783 37.1985 43.5865 33.3369 47.4481C33.1119 47.6698 33.0319 48.0014 33.1303 48.3014C33.2303 48.6031 33.4903 48.8214 33.8036 48.8664L40.2268 49.7864L39.4334 50.6747C39.1385 51.0047 39.1535 51.5064 39.4668 51.8197L50.1782 62.5311C50.3399 62.6928 50.5532 62.7744 50.7682 62.7744C50.9665 62.7744 51.1648 62.7044 51.3232 62.5628L52.2115 61.7695L53.1315 68.1926C53.1765 68.506 53.4231 68.736 53.7215 68.836C53.7981 68.861 53.8781 68.8726 53.9598 68.8726C54.1964 68.8726 54.4381 68.7693 54.6048 68.6043C58.413 64.7961 60.6213 59.5512 60.723 54.1646C67.0612 48.5164 71.1761 39.615 70.9944 31.8168C70.9827 31.3735 70.6244 31.0152 70.1794 31.0035ZM62.4996 45.3898C61.6879 46.2015 60.6213 46.6081 59.553 46.6081C58.4847 46.6081 57.418 46.2015 56.6064 45.3898C54.9831 43.7649 54.9831 41.1216 56.6064 39.4966C58.2314 37.8717 60.8746 37.8717 62.4996 39.4966C64.1246 41.1216 64.1246 43.7665 62.4996 45.3898Z" fill="white" />
-                <path d="M35.5397 59.1726C33.7565 60.9559 31.3082 69.0124 31.0349 69.924C30.9465 70.2173 31.0282 70.5357 31.2432 70.7523C31.4032 70.9123 31.6148 70.9973 31.8332 70.9973C31.9132 70.9973 31.9932 70.9856 32.0732 70.9623C32.9848 70.689 41.0413 68.2407 42.8246 66.4574C44.8329 64.4491 44.8329 61.1809 42.8246 59.1726C40.8146 57.1643 37.548 57.166 35.5397 59.1726Z" fill="white" />
-                <defs>
-                    <linearGradient id="paint0_linear_665_3150" x1="50.6611" y1="8.83203" x2="50.6611" y2="92.1653" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.229167" stop-color="#551FFF" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient id="paint1_linear_665_3150" x1="25.2225" y1="25.1736" x2="102.209" y2="59.2372" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#262933" />
-                        <stop offset="0.411458" stop-color="#171821" />
-                        <stop offset="1" stop-color="#11131A" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        },
-        {
-            title: 'Initiative',
-            description: 'Our team believes in taking proactive actions and going the extra mile, and it shows in the quality of the work we do.',
-            icon: <svg xmlns="http://www.w3.org/2000/svg" width="101" height="20%" viewBox="0 0 101 101" fill="none">
-                <path d="M50.6611 96.332C75.9741 96.332 96.4944 75.8117 96.4944 50.4987C96.4944 25.1856 75.9741 4.66538 50.6611 4.66538C25.348 4.66538 4.82773 25.1856 4.82773 50.4987C4.82773 75.8117 25.348 96.332 50.6611 96.332Z" fill="url(#paint0_linear_665_3150)" stroke="url(#paint1_linear_665_3150)" stroke-width="8.33331" />
-                <path d="M70.1794 31.0035C62.3713 30.8635 53.4665 34.9451 47.8299 41.2766C42.4434 41.3783 37.1985 43.5865 33.3369 47.4481C33.1119 47.6698 33.0319 48.0014 33.1303 48.3014C33.2303 48.6031 33.4903 48.8214 33.8036 48.8664L40.2268 49.7864L39.4334 50.6747C39.1385 51.0047 39.1535 51.5064 39.4668 51.8197L50.1782 62.5311C50.3399 62.6928 50.5532 62.7744 50.7682 62.7744C50.9665 62.7744 51.1648 62.7044 51.3232 62.5628L52.2115 61.7695L53.1315 68.1926C53.1765 68.506 53.4231 68.736 53.7215 68.836C53.7981 68.861 53.8781 68.8726 53.9598 68.8726C54.1964 68.8726 54.4381 68.7693 54.6048 68.6043C58.413 64.7961 60.6213 59.5512 60.723 54.1646C67.0612 48.5164 71.1761 39.615 70.9944 31.8168C70.9827 31.3735 70.6244 31.0152 70.1794 31.0035ZM62.4996 45.3898C61.6879 46.2015 60.6213 46.6081 59.553 46.6081C58.4847 46.6081 57.418 46.2015 56.6064 45.3898C54.9831 43.7649 54.9831 41.1216 56.6064 39.4966C58.2314 37.8717 60.8746 37.8717 62.4996 39.4966C64.1246 41.1216 64.1246 43.7665 62.4996 45.3898Z" fill="white" />
-                <path d="M35.5397 59.1726C33.7565 60.9559 31.3082 69.0124 31.0349 69.924C30.9465 70.2173 31.0282 70.5357 31.2432 70.7523C31.4032 70.9123 31.6148 70.9973 31.8332 70.9973C31.9132 70.9973 31.9932 70.9856 32.0732 70.9623C32.9848 70.689 41.0413 68.2407 42.8246 66.4574C44.8329 64.4491 44.8329 61.1809 42.8246 59.1726C40.8146 57.1643 37.548 57.166 35.5397 59.1726Z" fill="white" />
-                <defs>
-                    <linearGradient id="paint0_linear_665_3150" x1="50.6611" y1="8.83203" x2="50.6611" y2="92.1653" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.229167" stop-color="#551FFF" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient id="paint1_linear_665_3150" x1="25.2225" y1="25.1736" x2="102.209" y2="59.2372" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#262933" />
-                        <stop offset="0.411458" stop-color="#171821" />
-                        <stop offset="1" stop-color="#11131A" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        },
-        {
-            title: 'Initiative',
-            description: 'Our team believes in taking proactive actions and going the extra mile, and it shows in the quality of the work we do.',
-            icon: <svg xmlns="http://www.w3.org/2000/svg" width="101" height="20%" viewBox="0 0 101 101" fill="none">
-                <path d="M50.6611 96.332C75.9741 96.332 96.4944 75.8117 96.4944 50.4987C96.4944 25.1856 75.9741 4.66538 50.6611 4.66538C25.348 4.66538 4.82773 25.1856 4.82773 50.4987C4.82773 75.8117 25.348 96.332 50.6611 96.332Z" fill="url(#paint0_linear_665_3150)" stroke="url(#paint1_linear_665_3150)" stroke-width="8.33331" />
-                <path d="M70.1794 31.0035C62.3713 30.8635 53.4665 34.9451 47.8299 41.2766C42.4434 41.3783 37.1985 43.5865 33.3369 47.4481C33.1119 47.6698 33.0319 48.0014 33.1303 48.3014C33.2303 48.6031 33.4903 48.8214 33.8036 48.8664L40.2268 49.7864L39.4334 50.6747C39.1385 51.0047 39.1535 51.5064 39.4668 51.8197L50.1782 62.5311C50.3399 62.6928 50.5532 62.7744 50.7682 62.7744C50.9665 62.7744 51.1648 62.7044 51.3232 62.5628L52.2115 61.7695L53.1315 68.1926C53.1765 68.506 53.4231 68.736 53.7215 68.836C53.7981 68.861 53.8781 68.8726 53.9598 68.8726C54.1964 68.8726 54.4381 68.7693 54.6048 68.6043C58.413 64.7961 60.6213 59.5512 60.723 54.1646C67.0612 48.5164 71.1761 39.615 70.9944 31.8168C70.9827 31.3735 70.6244 31.0152 70.1794 31.0035ZM62.4996 45.3898C61.6879 46.2015 60.6213 46.6081 59.553 46.6081C58.4847 46.6081 57.418 46.2015 56.6064 45.3898C54.9831 43.7649 54.9831 41.1216 56.6064 39.4966C58.2314 37.8717 60.8746 37.8717 62.4996 39.4966C64.1246 41.1216 64.1246 43.7665 62.4996 45.3898Z" fill="white" />
-                <path d="M35.5397 59.1726C33.7565 60.9559 31.3082 69.0124 31.0349 69.924C30.9465 70.2173 31.0282 70.5357 31.2432 70.7523C31.4032 70.9123 31.6148 70.9973 31.8332 70.9973C31.9132 70.9973 31.9932 70.9856 32.0732 70.9623C32.9848 70.689 41.0413 68.2407 42.8246 66.4574C44.8329 64.4491 44.8329 61.1809 42.8246 59.1726C40.8146 57.1643 37.548 57.166 35.5397 59.1726Z" fill="white" />
-                <defs>
-                    <linearGradient id="paint0_linear_665_3150" x1="50.6611" y1="8.83203" x2="50.6611" y2="92.1653" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.229167" stop-color="#551FFF" />
-                        <stop offset="1" />
-                    </linearGradient>
-                    <linearGradient id="paint1_linear_665_3150" x1="25.2225" y1="25.1736" x2="102.209" y2="59.2372" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#262933" />
-                        <stop offset="0.411458" stop-color="#171821" />
-                        <stop offset="1" stop-color="#11131A" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        },
-    ]
+    const [data, setData] = useState({});
+    const svgElementFromString = (str, parentID) => {
+        const btn = document.querySelector(parentID);
+        if(!btn){
+            return
+        }
+        btn.innerHTML = str;
+    };
+    useEffect(() => {
+        axios   
+        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/about_page_benifits?locale=en`)
+        .then((res) => {
+            setData(res?.data?.docs[0]);
+        });
+    }, []);
     return (
         <div className='pt-28'>
-            <h5 className='text-black dark:text-white section-heading text-center flex-col flex justify-center leading-tight'>Discover how our core values <span>benefit you</span></h5>
+            <h5 className='text-black dark:text-white section-heading text-center flex-col flex justify-center leading-tight max-w-[300px] md:max-w-[400px] xl:max-w-[600px] mx-auto'>{data?.title}</h5>
             <div className='grid lg:grid-cols-2 mt-12 gap-x-14 gap-y-7'>
                 {
-                    benifits.map((benifit, index) =>
-                        <div className={`flex items-center bg-darkGradiantBg rounded-xl ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ' flex-row'}`}>
-                            <div className={` ${index % 2 !== 0 ? '-ml-7 lg:-m-0 lg:-mr-7' : '-ml-7'} py-5 `}>
-                                {
-                                    benifit.icon
-                                }
+                    data?.benifits?.map((benifit, index) =>
+                        <div className={`flex items-center bg-darkGradiantBg rounded-xl ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ' flex-row'}`} key={index}>
+                            <div className={` ${index % 2 !== 0 ? '-ml-7 lg:-m-0 lg:-mr-7' : '-ml-7'} py-5 `} id={`benifit_${index}`}>
+                                {svgElementFromString(benifit?.icon, `#benifit_${index}`)}
                             </div>
                             <div className={` ${index % 2 !== 0 ? 'lg:text-end' : 'text-start'} p-5`}>
-                                <p className={`font-title text-white font-semibold text-xl md:text-2xl xl:text-4xl `}>{benifit.title}</p>
-                                <p className='text-white text-base md:text-xl xl:text-3xl leading-tight mt-2'>{benifit.description}</p>
+                                <p className={`font-title text-white font-semibold text-xl md:text-2xl xl:text-4xl `}>{benifit?.title}</p>
+                                <p className='text-white text-base md:text-xl xl:text-3xl leading-tight mt-2'>{benifit?.description}</p>
                             </div>
                         </div>
                     )

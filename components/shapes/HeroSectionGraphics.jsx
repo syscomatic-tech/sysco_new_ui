@@ -1,19 +1,35 @@
-import Image from 'next/image'
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React from "react";
 
-const HeroSectionGraphics = () => {
-    const [imageSrc, setImageSrc] = useState('/assets/shapes/hero-shape-dark.png')
-
-    return <div id='scroll-image' className='imageChange bg-no-repeat bg-contain w-[600px] h-[600px] '>
-        <style
-            dangerouslySetInnerHTML={{
-                __html:
-                    "\n.imageChange{\n    animation: changeImage 3s linear infinite   ;\nbackground-image: url('/assets/shapes/hero-shape-dark.png');\n}\n\n@keyframes changeImage {\n 0 % {\n\n background-image: url('/assets/shapes/hero-shape-dark.png');\n  }\n\n50% {\n    background-image: url('/assets/shapes/hero-shape-light.png');\n    \n  }\n100% {\n\n    background-image: url('/assets/shapes/hero-shape-dark.png');\n  }\n}\n        "
-            }}
-        />
+const HeroSectionGraphics = ({ img_light, img_dark }) => {
+  const styles = {
+    imageChange: {
+      animation: 'changeImage 3s linear infinite',
+      backgroundImage: "url('/assets/shapes/hero-shape-dark.png')",
+    }
+  };
+  return (
+    <div
+      id="scroll-image"
+      className="imageChange bg-no-repeat bg-contain w-[600px] h-[600px] "
+      style={styles.imageChange}
+    >
+      <style>
+        {`
+        @keyframes changeImage {
+          0% {
+            background-image: url(${img_dark?.url});
+          }
+          50% {
+            background-image: url(${img_light?.url});
+          }
+          100% {
+            background-image: url(${img_dark?.url});
+          }
+        }
+        `}
+      </style>
     </div>
+  );
+};
 
-}
-
-export default HeroSectionGraphics
+export default HeroSectionGraphics;

@@ -91,7 +91,7 @@ const AllBlogs = () => {
             {/* category */}
             <div className='flex items-center justify-center gap-[5%] mt-10 font-title'>
                 {
-                    blogsCategory.map((item, index) => <div className='flex flex-col items-center'>
+                    blogsCategory.map((item, index) => <div className='flex flex-col items-center' key={index}>
                         <button className={`text-3xl ${selectedCategory === index ? 'text-primary ' : 'text-white'}`} onClick={() => setSelectedCategory(index)}>{item.title}</button>
                         {
                             selectedCategory === index && <div className='w-[140%] outline outline-[1px] outline-primary'></div>
@@ -102,8 +102,8 @@ const AllBlogs = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-10 sm:gap-y-[100px] md:gap-y-12 xl:gap-y-8'>
                 {/*  */}
                 {
-                    blogs.map(blog =>
-                        <Link href={blog.link} className='my-10 relative flex flex-col items-end'>
+                    blogs.map((blog,index) =>
+                        <Link href={blog.link} key={index} className='my-10 relative flex flex-col items-end'>
                             <Image className='w-full aspect-[398/250] object-cover' src={blog.thumbnail} width={398} height={250} alt='' />
                             <div className='-my-[20%] p-4 bg-darkGradiantBg w-[89%] h-full flex flex-col justify-between'>
                                 <div>

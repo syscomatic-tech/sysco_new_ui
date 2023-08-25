@@ -1,7 +1,26 @@
 import SideShade from '@/components/shapes/SideShade'
+import axios from 'axios';
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const AboutPageSecondSection = () => {
+    const [data, setData] = useState({});
+    const svgElementFromString = (str, parentID) => {
+        const btn = document.querySelector(parentID);
+        if(!btn){
+            return
+        }
+        btn.innerHTML = str;
+    };
+    useEffect(() => {
+        axios
+        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/about_page_second_section?locale=en`)
+        .then((res) => {
+            setData(res?.data?.docs[0]);
+        });
+    }, []);
+    // console.log(data?.DID[0]);
     return (
         <div className='mt-28'>
             <div className='w-full relative right-[-10vw] 2xl:right-[-18vw] 5xl:right-[-35vw] 10xl:right-[-40vw]'>
@@ -12,10 +31,10 @@ const AboutPageSecondSection = () => {
                     {/* discover */}
                     <div>
                         <div className='w-[50%] aspect-[5/4] rounded-lg bg-darkGradiantBg flex justify-center items-center flex-col gap-[5%]'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" viewBox="0 0 71 70" fill="none">
-                                <path d="M64.2699 9.205C59.2649 3.5 48.5199 0 35.4999 0C22.4799 0 11.7349 3.5 6.72992 9.205C-1.60008 18.865 -1.60008 51.205 6.72992 60.795C11.7349 66.5 22.4799 70 35.4999 70C48.5199 70 59.2649 66.5 64.2699 60.795C72.5999 51.135 72.5999 18.865 64.2699 9.205ZM53.9449 51.205C53.6158 51.6001 53.2038 51.9178 52.738 52.1356C52.2722 52.3534 51.7641 52.4658 51.2499 52.465C50.4321 52.4666 49.6396 52.1818 49.0099 51.66L41.6599 45.5C38.9313 47.7306 35.5241 48.9651 31.9999 49C28.8849 49 25.8398 48.0763 23.2497 46.3456C20.6596 44.615 18.6409 42.1552 17.4488 39.2773C16.2567 36.3993 15.9448 33.2325 16.5526 30.1773C17.1603 27.1221 18.6603 24.3157 20.863 22.1131C23.0657 19.9104 25.872 18.4103 28.9272 17.8026C31.9824 17.1949 35.1492 17.5068 38.0272 18.6989C40.9051 19.891 43.3649 21.9097 45.0956 24.4998C46.8262 27.0898 47.7499 30.1349 47.7499 33.25C47.7589 35.6842 47.1827 38.085 46.0699 40.25L53.4899 46.41C54.1751 47.0003 54.6052 47.833 54.69 48.7334C54.7748 49.6338 54.5078 50.5321 53.9449 51.24V51.205Z" fill="white" />
-                            </svg>
-                            <p className='text-white text-xl sm:text-4xl lg:text-3xl xl:text-[40px] text-center font-title font-semibold'>Discover</p>
+                            {/* <div id={`DID_Discover`}>
+                                {svgElementFromString(data?.DID[0]?.icon, `#DID_Discover`)}
+                            </div> */}
+                            {/* <p className='text-whit e text-xl sm:text-4xl lg:text-3xl xl:text-[40px] text-center font-title font-semibold'>{data?.DID[0]?.title}</p> */}
                         </div>
                     </div>
                     {/* Disruption */}
@@ -28,7 +47,7 @@ const AboutPageSecondSection = () => {
                                 <path d="M20.6445 61.4908C22.7731 61.2052 24.8283 60.7018 26.7969 60.0024V24.7461H20.6445V61.4908Z" fill="white" />
                                 <path d="M37.0508 53.8992V12.4414H30.8984V58.2215C33.1312 57.0377 35.1855 55.5741 37.0508 53.8992Z" fill="white" />
                             </svg>
-                            <p className='text-white text-xl sm:text-4xl lg:text-3xl xl:text-[40px] text-center font-title font-semibold'>Disruption</p>
+                            {/* <p className='text-white text-xl sm:text-4xl lg:text-3xl xl:text-[40px] text-center font-title font-semibold'>{data?.DID[2]?.title}</p> */}
                         </div>
                     </div>
                     {/* innovation */}
@@ -47,7 +66,7 @@ const AboutPageSecondSection = () => {
                                 <path d="M12.4065 26.5005H12.5009C12.4739 26.5005 12.4335 26.5005 12.4065 26.514V26.5005Z" fill="white" />
                                 <path d="M20.5672 26.5005V26.514C20.5402 26.5005 20.5267 26.5005 20.4998 26.5005H20.5672Z" fill="white" />
                             </svg>
-                            <p className='text-white text-xl sm:text-4xl lg:text-3xl xl:text-[40px] text-center font-title font-semibold'>innovation</p>
+                            {/* <p className='text-white text-xl sm:text-4xl lg:text-3xl xl:text-[40px] text-center font-title font-semibold'>{data?.DID[1]?.title}</p> */}
                         </div>
                     </div>
                 </div>
@@ -60,16 +79,16 @@ const AboutPageSecondSection = () => {
                                 <path className='fill-primary dark:fill-[url(#paint2_linear_665_3133)]' d="M70.75 30.75C69.5 32.25 67.5 33 65.5 33H58.5L56.75 34.75C57.5 36.5 57.75 38.5 57.75 40.5C57.75 50.25 50 58 40.25 58C30.5 58 22.75 50.25 22.75 40.5C22.75 30.75 30.5 23 40.25 23C42.25 23 44.25 23.5 46 24L48 22.5V15.5C48 13.5 48.75 11.5 50.25 10.25L52.75 7.75C48.75 6.25 44.75 5.5 40.5 5.5C21.25 5.5 5.5 21.25 5.5 40.5C5.5 59.75 21.25 75.5 40.5 75.5C59.75 75.5 75.5 59.75 75.5 40.5C75.5 36.25 74.75 32.25 73.25 28.25L70.75 30.75Z" />
                                 <defs>
                                     <linearGradient id="paint0_linear_665_3133" x1="77.5485" y1="3.62454" x2="31.3334" y2="32.2297" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#551FFF" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0.4" />
+                                        <stop stopColor="#551FFF" />
+                                        <stop offset="1" stopColor="white" stop-opacity="0.4" />
                                     </linearGradient>
                                     <linearGradient id="paint1_linear_665_3133" x1="52.7115" y1="28.3963" x2="23.8344" y2="46.27" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#551FFF" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0.4" />
+                                        <stop stopColor="#551FFF" />
+                                        <stop offset="1" stopColor="white" stop-opacity="0.4" />
                                     </linearGradient>
                                     <linearGradient id="paint2_linear_665_3133" x1="74.6923" y1="6.60976" x2="-6.16357" y2="56.6561" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#551FFF" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0.4" />
+                                        <stop stopColor="#551FFF" />
+                                        <stop offset="1" stopColor="white" stop-opacity="0.4" />
                                     </linearGradient>
                                 </defs>
                             </svg>
@@ -81,8 +100,8 @@ const AboutPageSecondSection = () => {
                                 <path className='fill-primary dark:fill-[url(#paint0_linear_665_3141)]' d="M77.8526 38.4426C53.3851 10.4851 27.6126 10.4751 3.14756 38.4426C2.66756 38.9901 2.37256 39.7101 2.37256 40.5001C2.37256 41.2901 2.66506 42.0126 3.15006 42.5626L3.14756 42.5601C15.3801 56.5376 27.9451 63.6276 40.4951 63.6276C53.0476 63.6276 65.6151 56.5376 77.8501 42.5601C78.3301 42.0126 78.6226 41.2926 78.6226 40.5026C78.6226 39.7126 78.3301 38.9926 77.8476 38.4401L77.8526 38.4426ZM9.70506 40.5001C30.4526 18.0976 50.5451 18.0976 71.2976 40.5001C50.5451 62.9026 30.4476 62.9026 9.70506 40.5001ZM40.5001 27.3751C33.2526 27.3751 27.3751 33.2526 27.3751 40.5001C27.3751 47.7476 33.2526 53.6251 40.5001 53.6251C47.7476 53.6251 53.6251 47.7476 53.6251 40.5001C53.6151 33.2551 47.7451 27.3851 40.5001 27.3751ZM40.5001 47.3751C36.7026 47.3751 33.6251 44.2976 33.6251 40.5001C33.6251 36.7026 36.7026 33.6251 40.5001 33.6251C44.2976 33.6251 47.3751 36.7026 47.3751 40.5001C47.3701 44.2951 44.2951 47.3701 40.5001 47.3751Z" />
                                 <defs>
                                     <linearGradient id="paint0_linear_665_3141" x1="77.7428" y1="18.2025" x2="18.1892" y2="79.0961" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#551FFF" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0.4" />
+                                        <stop stopColor="#551FFF" />
+                                        <stop offset="1" stopColor="white" stop-opacity="0.4" />
                                     </linearGradient>
                                 </defs>
                             </svg>

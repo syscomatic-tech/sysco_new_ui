@@ -25,7 +25,7 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        darkGradiantBg: ' linear-gradient(113.87deg, #262933 19.52%, #171821 51.03%, #11131A 96.1%)',
+        darkGradiantBg: 'linear-gradient(113.87deg, #262933 19.52%, #171821 51.03%, #11131A 96.1%)',
         getAQuoteImgBg: 'radial-gradient(50% 50% at 50% 50%, rgba(13, 13, 13, 0) 0%, #0D0D0D 100%)'
       },
       screens: {

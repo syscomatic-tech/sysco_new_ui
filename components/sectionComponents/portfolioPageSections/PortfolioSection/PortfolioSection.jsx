@@ -5,6 +5,7 @@ import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 
 const PortfolioSection = () => {
     const [selectedPage, setselectedPage] = useState(1)
+    const [hoveredPortfolio, sethoveredPortfolio] = useState(-1)
     const portfolio = [
         {
             brandLogo: 'https://i.ibb.co/cwZJmks/portfolio-3-tunibibi.png',
@@ -55,6 +56,12 @@ const PortfolioSection = () => {
 
     return (
         <div className='py-36'>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html:
+                        "\n  .portfolioImgContainer {\n    transformStyle: 'preserve-3d',\n    perspective: '800px'\n  }\n  .portfolioImg {\n    transform: 'rotateY(-20deg)'\n  }\n"
+                }}
+            />
             <div className='flex flex-col gap-8 sm:gap-12 md:gap-20 lg:gap-36'>
                 {
                     portfolio.map((item, index) =>
@@ -71,11 +78,28 @@ const PortfolioSection = () => {
                                     </Link>
                                 </div>
                             </div>
-                            <div className='w-full md:w-1/2 relative flex justify-end'>
-                                <div className=' hidden md:block w-full h-[93%] absolute top-0 right-0 bg-darkGradiantBg z-[-1]'>
-                                </div>
-                                <Image src='https://i.ibb.co/Vgc03FR/432863e.png' className='w-full object-cover md:mr-[5%] md:mt-[5%]' width={540} height={420} alt='' />
-                            </div>
+                            {/*  */}
+                            {
+                                hoveredPortfolio !== index ?
+                                    <div className={`w-full md:w-1/2 relative flex justify-end duration-200 portfolioImgContainer`}>
+                                        <div className=' hidden md:block w-full h-[93%] absolute top-0 right-0 bg-darkGradiantBg z-[-1] '>
+                                        </div>
+                                        <Image src='https://i.ibb.co/Vgc03FR/432863e.png' className='w-full object-cover md:mr-[5%] md:mt-[5%] ' width={540} height={420} alt='' onMouseEnter={() => sethoveredPortfolio(index)} onMouseLeave={() => sethoveredPortfolio(1)} />
+                                    </div>
+                                    :
+
+                                    // index % 2 !== 0 ? <div className={`w-full md:w-1/2 relative flex justify-end duration-200 portfolioImgContainer`} style={{ transformStyle: 'preserve-3d', perspective: '800px' }}>
+                                    //     <Image src='https://i.ibb.co/Vgc03FR/432863e.png' className='w-full object-cover md:mr-[5%] md:mt-[5%]' style={{ transform: index % 2 === 0 ? 'rotateY(-20deg)' : 'rotateY(20deg)' }} width={540} height={420} alt='' />
+                                    //     <div className=' hidden md:block w-full h-[93%] absolute top-0 right-0 bg-darkGradiantBg' style={{ transform: index % 2 === 0 ? 'rotateY(-20deg)' : 'rotateY(20deg)' }}>
+                                    //     </div>
+                                    // </div> :
+                                    <div className={`w-full md:w-1/2 relative flex justify-end duration-200 `} style={{ transformStyle: 'preserve-3d', perspective: '800px' }}>
+                                        <Image src='https://i.ibb.co/Vgc03FR/432863e.png' className='w-full object-cover md:mr-[5%] md:mt-[5%]' style={{ transform: index % 2 === 0 ? 'rotateY(-15deg) rotateX(5deg)' : 'rotateY(15deg) rotateX(5deg)' }} width={540} height={420} alt='' />
+                                        <div className=' hidden md:block w-full h-[93%] absolute top-0 right-0 bg-darkGradiantBg z-[-1]' style={{ transform: index % 2 === 0 ? 'rotateY(-15deg) rotateX(5deg)' : 'rotateY(15deg) rotateX(5deg)' }}>
+                                        </div>
+                                    </div>
+                            }
+
                         </div>
                     )
                 }
@@ -84,7 +108,7 @@ const PortfolioSection = () => {
                 <button onClick={() => setselectedPage(selectedPage - 1)} className={'text-sm text-white font-title dark:text-black w-[32px] h-[32px] rounded-lg bg-black dark:bg-white flex justify-center items-center'}><BiChevronLeft size={20} /></button>
                 {
                     paginations.map((item, index) => {
-                        return <button onClick={() => setselectedPage(index + 1)} className={`text-sm text-white font-title  w-[32px] h-[32px] rounded-lg ${selectedPage - 1 !== index ? 'bg-black dark:text-black dark:bg-white' : 'bg-primary dark:text-white'} `}>{item.page}</button>
+                        return <button key={index} onClick={() => setselectedPage(index + 1)} className={`text-sm text-white font-title  w-[32px] h-[32px] rounded-lg ${selectedPage - 1 !== index ? 'bg-black dark:text-black dark:bg-white' : 'bg-primary dark:text-white'} `}>{item.page}</button>
                     })
                 }
                 <button onClick={() => setselectedPage(selectedPage + 1)} className={'text-sm text-white font-title dark:text-black w-[32px] h-[32px] rounded-lg bg-black dark:bg-white flex justify-center items-center'}><BiChevronRight size={20} /></button>

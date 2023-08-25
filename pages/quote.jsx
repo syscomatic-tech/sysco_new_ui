@@ -1,21 +1,29 @@
 import Button from '@/components/button/Button'
 import MainLayout from '@/layouts/Main/MainLayout'
+import axios from 'axios'
 import Image from 'next/image'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 const quote = () => {
-    const theme = useSelector(state => state.theme.value)
-    console.log(theme)
+    const [data, setData] = useState({});
+  useEffect(() => {
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/get_a_quote?locale=en`)
+      .then((res) => {
+        setData(res?.data?.docs[0]);
+      });
+  }, []);
     return (
         <MainLayout>
             <div className='py-20'>
-                <p className='text-4xl sm:text-[40px] md:text-[50px] xl:text-[72px] text-black dark:text-white font-medium font-title'>Get a Quote</p>
-                <p className='text-base md:text-xl lg:text-2xl xl:text-3xl text-black dark:text-white '>Let’s work to make something new</p>
+                <p className='text-4xl sm:text-[40px] md:text-[50px] xl:text-[72px] text-black dark:text-white font-medium font-title'>{data?.title}</p>
+                <p className='text-base md:text-xl lg:text-2xl xl:text-3xl text-black dark:text-white '>{data?.subtitle}</p>
                 <div className='pt-16 flex items-center flex-col lg:flex-row gap-12'>
                     <div className=''>
                         <Image
-                            src='/assets/get-a-quote/quotePageImg.png'
+                            src={data?.img?.url}
                             alt=''
                             width={400}
                             height={400}/>

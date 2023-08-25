@@ -38,7 +38,7 @@ const BolgsSecondSection = () => {
         <GradiantCircle size={100} className={'absolute top-[350px] z-[-1] right-48 hidden xl:block'} />
         {
           blogs.map((blog, index) =>
-            <div className={`flex items-center w-[70%] max-w-[500px] ${index % 2 !== 0 && 'xl:row-span-2 justify-self-end mr-[15%]'}`}>
+            <div key={index} className={`flex items-center w-[70%] max-w-[500px] ${index % 2 !== 0 && 'xl:row-span-2 justify-self-end mr-[15%]'}`}>
               <div className=' relative'>
                 <Image src={blog.image} width={500} height={620} className='' alt=''></Image>
                 <div className={`w-[28%] h-full  absolute top-0 right-0`} style={{ backgroundColor: blog.bgColor }}></div>

@@ -4,48 +4,13 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import Carousel from 'nuka-carousel'
+import axios from 'axios'
 
 const ProjectsSection = () => {
     const [screenWidth, setScreenWidth] = useState(null);
     const [counter, setCounter] = useState(0);
-    const projects = [
-        {
-            img: 'https://i.ibb.co/1dRD7BQ/Rectangle-4727-1.png',
-            title: 'D2C food ordering platform',
-            description: 'gah orgaer ghlkerha gregrkaes gh lres glrehj glreih This web app is used for D2C food ordering systems, kitchen management systems, and digital payment integration',
-            link: ''
-        },
-        {
-            img: 'https://i.ibb.co/1dRD7BQ/Rectangle-4727-1.png',
-            title: 'D2C food ordering platform',
-            description: 'This web app is used for D2C food ordering systems, kitchen management systems, and digital payment integration',
-            link: ''
-        },
-        {
-            img: 'https://i.ibb.co/1dRD7BQ/Rectangle-4727-1.png',
-            title: 'D2C food ordering platform',
-            description: 'This web app is used for D2C food ordering systems, kitchen management systems, and digital payment integration',
-            link: ''
-        },
-        {
-            img: 'https://i.ibb.co/1dRD7BQ/Rectangle-4727-1.png',
-            title: 'D2C food ordering platform',
-            description: 'gah orgaer ghlkerha gregrkaes gh lres glrehj glreih This web app is used for D2C food ordering systems, kitchen management systems, and digital payment integration',
-            link: ''
-        },
-        {
-            img: 'https://i.ibb.co/1dRD7BQ/Rectangle-4727-1.png',
-            title: 'D2C food ordering platform',
-            description: 'This web app is used for D2C food ordering systems, kitchen management systems, and digital payment integration',
-            link: ''
-        },
-        {
-            img: 'https://i.ibb.co/1dRD7BQ/Rectangle-4727-1.png',
-            title: 'D2C food ordering platform',
-            description: 'This web app is used for D2C food ordering systems, kitchen management systems, and digital payment integration',
-            link: ''
-        },
-    ]
+    const [title, setTitle] = useState('');
+    const [data, setData] = useState([]);
     useEffect(() => {
         const interval = setInterval(() => {
             setCounter((counter) => counter + 1);
@@ -66,12 +31,22 @@ const ProjectsSection = () => {
             window.removeEventListener("resize", handleResize);
         };
     }, [screenWidth, counter]);
-
+    useEffect(() => {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/home_page_projects?locale=en`)
+        .then((res) => {
+          setTitle(res?.data?.docs[0].title);
+        });
+      axios
+        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/projects?locale=en`)
+        .then((res) => {
+          setData(res?.data.docs);
+        });
+    }, []);
     return (
         <div className='py-12 relative'>
-            <h5 className='section-heading text-black dark:text-white leading-tight flex flex-col w-full'>
-                <span>Take a look at some of our </span>
-                <span>successful projects</span>
+            <h5 className='section-heading max-w-[300px] sm:max-w-[400px] lg:max-w-[500px] text-black dark:text-white leading-tight flex flex-col'>
+                {title}
             </h5>
             <div className='mt-10'>
                 <div className=''>
@@ -84,7 +59,7 @@ const ProjectsSection = () => {
                         wrapAround={true}
                         renderBottomCenterControls={false}
                         renderCenterLeftControls={
-                            projects.length > 3
+                            data?.length > 3
                                 ? ({ previousSlide }) => (
                                     <svg
                                         className='absolute -top-5 sm:-top-20 z-30 right-40'
@@ -94,13 +69,13 @@ const ProjectsSection = () => {
                                         fill="none"
                                         onClick={previousSlide}
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M1 11L10 20L11.775 18.225L4.55 11L93 11V9L4.55 9L11.775 1.775L10 0L1 9L0 10L1 11Z" fill="#9C99A5" />
+                                        <path opacity="0.5" fillRule="evenodd" clipRule="evenodd" d="M1 11L10 20L11.775 18.225L4.55 11L93 11V9L4.55 9L11.775 1.775L10 0L1 9L0 10L1 11Z" fill="#9C99A5" />
                                     </svg>
                                 )
                                 : false
                         }
                         renderCenterRightControls={
-                            projects.length > 3
+                            data?.length > 3
                                 ? ({ nextSlide }) => (
                                     <svg
                                         className='absolute -top-5 sm:-top-20 z-30 right-0 rotate-180'
@@ -110,15 +85,15 @@ const ProjectsSection = () => {
                                         fill="none"
                                         onClick={nextSlide}
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M1 11L10 20L11.775 18.225L4.55 11L93 11V9L4.55 9L11.775 1.775L10 0L1 9L0 10L1 11Z" fill="#9C99A5" />
+                                        <path opacity="0.5" fillRule="evenodd" clipRule="evenodd" d="M1 11L10 20L11.775 18.225L4.55 11L93 11V9L4.55 9L11.775 1.775L10 0L1 9L0 10L1 11Z" fill="#9C99A5" />
                                     </svg>
                                 )
                                 : false
                         }
                     >
-                        {projects.map((item, index) => (
-                            <div className='relative px-3 max-w-max mx-auto mt-10 sm:mt-0'>
-                                <Image src={item.img} className='' width={466} height={551} alt=''></Image>
+                        {data?.map((item, index) => (
+                            <div key={index} className='relative px-3 max-w-max mx-auto mt-10 sm:mt-0'>
+                                <Image src={item?.image?.url} className='' width={466} height={551} alt=''></Image>
                                 <div className='absolute bottom-0 left-0 pl-[11px] '>
                                     <div className='relative'>
 
@@ -127,9 +102,9 @@ const ProjectsSection = () => {
                                                 <path d="M0 0.410645L419.647 0.410645L399.312 132.719L377.128 250.977L0 250.977L0 0.410645Z" fill="url(#paint0_linear_753_14977)" />
                                                 <defs>
                                                     <linearGradient id="paint0_linear_753_14977" x1="81.7209" y1="49.5465" x2="380.975" y2="271.303" gradientUnits="userSpaceOnUse">
-                                                        <stop stop-color="#262933" />
-                                                        <stop offset="0.411458" stop-color="#171821" />
-                                                        <stop offset="1" stop-color="#11131A" />
+                                                        <stop stopColor="#262933" />
+                                                        <stop offset="0.411458" stopColor="#171821" />
+                                                        <stop offset="1" stopColor="#11131A" />
                                                     </linearGradient>
                                                 </defs>
                                             </svg> :
@@ -137,9 +112,9 @@ const ProjectsSection = () => {
                                                     <path d="M0 0.410645L419.647 0.410645L399.312 132.719L377.128 250.977L0 250.977L0 0.410645Z" fill="url(#paint0_linear_753_14977)" />
                                                     <defs>
                                                         <linearGradient id="paint0_linear_753_14977" x1="81.7209" y1="49.5465" x2="380.975" y2="271.303" gradientUnits="userSpaceOnUse">
-                                                            <stop stop-color="#262933" />
-                                                            <stop offset="0.411458" stop-color="#171821" />
-                                                            <stop offset="1" stop-color="#11131A" />
+                                                            <stop stopColor="#262933" />
+                                                            <stop offset="0.411458" stopColor="#171821" />
+                                                            <stop offset="1" stopColor="#11131A" />
                                                         </linearGradient>
                                                     </defs>
                                                 </svg>
@@ -148,13 +123,13 @@ const ProjectsSection = () => {
                                         <div className='absolute h-full bottom-0 left-0 max-w-[80%] sm:max-w-[100%] pb-12'>
                                             <div className={`p-6 pr-3 flex flex-col justify-between`}>
                                                 <div>
-                                                    <p className='text-base sm:text-xl text-white font-title'>{item.title}</p>
-                                                    <p className=' text-[8px] sm:text-sm sm:mt-2 mb-2 sm:mb-6 text-white'>{item.description}</p>
+                                                    <p className='text-base sm:text-xl text-white font-title'>{item?.name}</p>
+                                                    <p className=' text-[8px] sm:text-sm sm:mt-2 mb-2 sm:mb-6 text-white'>{item?.description}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className='absolute bottom-0 p-6'>
-                                            <Link className='text-base leading-tight sm:text-3xl text-white font-title flex items-center gap-2 sm:gap-5' href={item.link}>Discover <FaArrowRightLong /></Link>
+                                            <Link className='text-base leading-tight sm:text-3xl text-white font-title flex items-center gap-2 sm:gap-5' href={item?.link}>Discover <FaArrowRightLong /></Link>
                                         </div>
                                     </div>
                                 </div>

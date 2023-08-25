@@ -1,3 +1,4 @@
+
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
@@ -6,11 +7,12 @@ import HeroSection from '@/components/sectionComponents/HomePageSections/HeroSec
 import BrandsSection from '@/components/sectionComponents/HomePageSections/BrandSection/BrandSection'
 import ServicesSection from '@/components/sectionComponents/HomePageSections/ServicesSection/ServicesSection'
 import ImpactSection from '@/components/sectionComponents/HomePageSections/ImpactSection/ImpactSection'
-import DiscoverCollaborativeSection from '@/components/sectionComponents/HomePageSections/DiscoverCollaborativeSection/DiscoverCollaborativeSection'
 import TechnologySection from '@/components/sectionComponents/HomePageSections/TechnologySection/TechnologySection'
 import ProjectsSection from '@/components/sectionComponents/HomePageSections/ProjectsSection/ProjectsSection'
 import LetsStartSection from '@/components/sectionComponents/HomePageSections/LetsStartSection/LetsStartSection'
 import CustomerSection from '@/components/sectionComponents/HomePageSections/CustomerSection/CustomerSection'
+import axios from 'axios'
+import WorkProcessSection from '@/components/sectionComponents/HomePageSections/WorkProcessSection/WorkProcessSection'
 
 export default function Home() {
   return (
@@ -21,7 +23,7 @@ export default function Home() {
           <BrandsSection/>
           <ServicesSection/>
           <ImpactSection/>
-          <DiscoverCollaborativeSection/>
+          <WorkProcessSection/>
           <TechnologySection/>
           <ProjectsSection/>
           <CustomerSection/>
